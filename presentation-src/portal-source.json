@@ -1,0 +1,11 @@
+{
+  "repository": "CASMulder2003/amerborgh-portaal",
+  "commit": "aa0fef4b032ac8bfe1c5e83df594d944dbefd744",
+  "components": [
+    "pages/reporting/overview/Dashboard.jsx",
+    "pages/reporting/forms/FormEditor.jsx",
+    "pages/reporting/imports/FileImport.jsx",
+    "pages/reporting/reports/ReportReader.jsx"
+  ],
+  "data": "Synthetic Hotel A, Hotel B, Hotel C; no production API."
+}

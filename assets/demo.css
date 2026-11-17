@@ -21,6 +21,28 @@ body { background:var(--page); }
   .reveal .controls[data-controls-layout="edges"] .navigate-right { right:8px; }
   .reveal .controls .navigate-left .controls-arrow { transform:scale(.7); }
   .reveal .controls .navigate-right .controls-arrow { transform:rotate(180deg) scale(.7); }
+  .reveal .controls .navigate-left,
+  .reveal .controls .navigate-right { isolation:isolate; transition:color 240ms ease, opacity 240ms ease; }
+  .reveal .controls .navigate-left::before,
+  .reveal .controls .navigate-right::before { content:""; position:absolute; inset:-8px 0; border-radius:12px; opacity:0; z-index:-1; pointer-events:none; transition:opacity 240ms ease; }
+  .reveal .controls .navigate-left::before { background:linear-gradient(to right,rgba(131,83,72,.96),rgba(131,83,72,.86) 48%,rgba(131,83,72,0)); }
+  .reveal .controls .navigate-right::before { background:linear-gradient(to left,rgba(131,83,72,.96),rgba(131,83,72,.86) 48%,rgba(131,83,72,0)); }
+  .reveal .controls .controls-arrow { transition:transform 240ms ease; }
+  .reveal .controls .navigate-left:focus-visible,
+  .reveal .controls .navigate-right:focus-visible { color:white; opacity:1; }
+  .reveal .controls .navigate-left:focus-visible::before,
+  .reveal .controls .navigate-right:focus-visible::before { opacity:1; }
+  @media (hover:hover) {
+    .reveal .controls .navigate-left:hover,
+    .reveal .controls .navigate-right:hover { color:white; opacity:1; }
+    .reveal .controls .navigate-left:hover::before,
+    .reveal .controls .navigate-right:hover::before { opacity:1; }
+    .reveal .controls .navigate-left:hover .controls-arrow { transform:translateX(-3px) scale(.7); }
+    .reveal .controls .navigate-right:hover .controls-arrow { transform:translateX(3px) rotate(180deg) scale(.7); }
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .reveal .controls button,.reveal .controls button::before,.reveal .controls .controls-arrow { transition:none; }
 }
 .reveal .slides section.cover > h2 { display:none; }
 .cover-top { display:flex; justify-content:space-between; align-items:center; margin:8px 0 85px; }
@@ -192,3 +214,30 @@ body { background:var(--page); }
 .entry-aside h3 { font:32px var(--serif); margin-bottom:24px; }
 .entry-aside p { font-size:23px; }
 .entry-aside .small { margin-top:30px; }
+
+/* Original portal views run in isolated frames, preserving their own styles. */
+.reveal iframe.real-portal { display:block; width:100%; max-width:none; height:650px; max-height:none; margin:0; border:1px solid var(--line); border-radius:8px; background:var(--page); }
+.screen-tabs { display:flex; gap:8px; margin:0 0 14px; }
+.screen-tabs button { font-size:18px; }
+#overview iframe.real-portal { height:650px; }
+#delivery iframe.real-portal { height:565px; }
+#delivery .delivery-layout { grid-template-columns:minmax(0,3fr) minmax(240px,1fr); gap:28px; }
+#delivery .steps { margin-bottom:12px; }
+#delivery .delivery-aside { padding-top:20px; }
+
+.screen-tabs > span { margin-left:auto; align-self:center; color:var(--muted); font-size:19px; }
+#central-overview iframe.real-portal { height:650px; }
+#manual-demo iframe.real-portal { height:620px; }
+#file-demo iframe.real-portal { height:525px; }
+[hidden] { display:none !important; }
+.responsibilities { margin-top:24px; }
+.responsibilities > div { display:grid; grid-template-columns:1fr 1.4fr 1.4fr; gap:36px; padding:26px 8px; border-bottom:1px solid var(--line); }
+.responsibilities > div.responsibility-head { padding:8px 8px 18px; border-bottom:2px solid #c5b8ad; }
+.reveal .responsibilities h3 { font-size:29px; margin:0; }
+.reveal .responsibilities p { font:23px/1.45 Arial,sans-serif; margin:0; }
+.responsibilities strong { font:27px/1.25 var(--serif); }
+.reveal .practical-note { margin-top:32px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:23px; }
+.access-layout { display:grid; grid-template-columns:repeat(3,1fr); gap:42px; margin-top:65px; }
+.access-layout > div { border-top:2px solid var(--line); padding-top:25px; }
+.reveal .access-layout h3 { font-size:32px; }
+.reveal .access-layout p { font-size:25px; }

@@ -4,32 +4,48 @@ Interactieve toelichting voor directie en ondernemingen, gemaakt met Quarto en r
 
 ## Bekijken
 
-Open `index.html` in een browser. De presentatie bevat alle benodigde bestanden en werkt ook zonder internet. Blader met de pijltjestoetsen, klik op de voorbeelden en gebruik **F** voor volledig scherm. **Esc** toont het dia-overzicht; **S** opent de sprekersweergave.
+Open de presentatie via GitHub Pages of een lokale webserver. De interactieve schermen laden uit `assets/portal`, dus openen via `file://` is niet voldoende. Lokaal:
+
+```sh
+python -m http.server 8768 --bind 127.0.0.1
+```
+
+Open daarna `http://127.0.0.1:8768/`. Pijltjestoetsen bladeren door de dia’s. **F** opent volledig scherm, **Esc** het dia-overzicht en **S** de sprekersweergave. Langere portaalformulieren zijn binnen het scherm te scrollen.
 
 ## Inhoud
 
-Acht dia’s: introductie, de drie rapportageonderdelen, overzicht voor onderneming en Amerborgh, KPI’s, kwalitatieve toelichtingen, invulbare voorbeeldformulieren, een korte aanleverdemonstratie en het doel van de rapportage. De nadruk ligt op de informatie en het gebruik daarvan, niet op de bediening van alle functies.
+1. Het rapportageportaal
+2. Waarom het rapportageportaal?
+3. De drie onderdelen
+4. Het financiële overzicht
+5. KPI’s per onderneming
+6. Kwalitatieve toelichting
+7. Wat ziet Amerborgh?
+8. Informatie aanleveren
+9. Wie levert wat aan?
+10. Gebruikers en toegang
 
-**Alle bedrijven, cijfers en antwoorden zijn fictieve voorbeelden.** De schermen zijn vereenvoudigd. Er worden geen bestanden geüpload, gegevens opgeslagen of AI-aanroepen uitgevoerd. De presentatie heeft geen verbinding met het echte portaal. Automatische AFAS-/LucaNet-koppelingen worden als vervolgstap benoemd.
+De portaalvoorbeelden gebruiken de oorspronkelijke React-onderdelen en CSS van het portaal. De presentatie toont schermfragmenten, geen volledig portaal. **Hotel A, Hotel B, Hotel C en alle cijfers en antwoorden zijn fictief.** Er is geen verbinding met productie of AI. Formulierwijzigingen bestaan alleen in het geheugen van de geopende demo. Het importvoorbeeld gebruikt een ingebouwd werkblad met de echte herkenningscode.
 
-## Bewerken
+## Bewerken en bouwen
 
-- `index.qmd`: dia’s, tekst en sprekersnotities.
-- `assets/demo.css`: vormgeving.
-- `assets/demo.js`: fictieve gegevens en interactieve voorbeelden.
-- `assets/demo.html`: koppeling met de interactieve voorbeelden.
-- `assets/amerborgh-logo.svg`: het logo uit het portaal.
+- `index.qmd`: dia’s en sprekersnotities.
+- `assets/demo.css` en `assets/demo.js`: presentatieopmaak en bediening.
+- `presentation-src/`: demo-koppeling, fictieve gegevens en bouwscript.
+- `presentation-src/portal-source.json`: bronversie van de portaalonderdelen.
+- `assets/portal/`: gebundelde portaalvoorbeelden, inclusief importwerker.
 
-Installeer [Quarto](https://quarto.org/docs/get-started/), open deze map en voer uit:
+Voor een nieuwe portaalbuild is een lokale checkout van `amerborgh-portaal` met geïnstalleerde frontendafhankelijkheden nodig:
 
 ```sh
+PORTAL_SOURCE=/pad/naar/amerborgh-portaal/frontend node presentation-src/build.mjs
 quarto render index.qmd
 ```
 
-Getest met Quarto 1.8.26. Het gegenereerde `index.html` wordt meegeleverd, zodat GitHub Pages geen build nodig heeft. Na wijzigingen moet `index.html` opnieuw worden gegenereerd en meegeplaatst.
+Het bouwscript leest de oorspronkelijke onderdelen rechtstreeks. Alleen tijdens de presentatiebuild maakt het interne onderdelen exporteerbaar en vervangt het de API door de lokale demo-adapter. Het portaal zelf wordt niet gewijzigd. De afgewerkte bestanden worden meegeleverd, dus GitHub Pages heeft geen aparte bouwstap nodig.
 
 ## GitHub Pages
 
-Kies in **Settings → Pages**: **Deploy from a branch**, branch **main**, map **/(root)**. `.nojekyll` zorgt ervoor dat de vooraf gemaakte HTML rechtstreeks wordt aangeboden.
+Kies in **Settings → Pages**: **Deploy from a branch**, branch **main**, map **/(root)**. `.nojekyll` laat de vooraf gemaakte bestanden rechtstreeks aanbieden.
 
-Een Pages-publicatie is openbaar. Plaats daarom geen echte bedrijfsgegevens, inloggegevens, exports of interne documenten in deze repository.
+De repository en Pages-presentatie zijn openbaar. Voeg geen echte cijfers, sleutels, exports of interne documenten toe.

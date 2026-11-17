@@ -35,76 +35,22 @@ format:
 <p class="cover-intro">Financiële informatie, KPI’s<br>en kwalitatieve toelichtingen</p>
 <div class="cover-rule"></div>
 <div class="contents">
-  <a href="#/drie-onderdelen"><span>01</span><strong>De rapportage</strong><small>Welke informatie vragen we?</small></a>
-  <a href="#/overzicht"><span>02</span><strong>Het overzicht</strong><small>Voor de onderneming en Amerborgh</small></a>
-  <a href="#/invullen"><span>03</span><strong>Aanleveren</strong><small>Een kort voorbeeld</small></a>
+  <a href="#/doel"><span>01</span><strong>Doel en inhoud</strong><small>Waarom en wat vragen we?</small></a>
+  <a href="#/overzicht"><span>02</span><strong>Het portaal</strong><small>Voor de onderneming en Amerborgh</small></a>
+  <a href="#/aanleveren"><span>03</span><strong>Aanleveren en toegang</strong><small>Wie doet wat?</small></a>
 </div>
 ```
 
 ::: {.notes}
-Deze presentatie ondersteunt het contextdocument. De schermen zijn vereenvoudigd en alle bedrijven en bedragen zijn fictief. De bedoeling is te laten zien welke informatie samenkomt en wat die toevoegt aan het gesprek; dit is geen handleiding voor alle functies.
+Deze presentatie ondersteunt het contextdocument. De schermen gebruiken de originele portaalonderdelen met fictieve gegevens voor Hotel A, Hotel B en Hotel C. De bedoeling is te laten zien welke informatie samenkomt en wat die toevoegt aan het gesprek; dit is geen handleiding voor alle functies.
 :::
 
-## De drie onderdelen {#drie-onderdelen}
+## Waarom het rapportageportaal? {#doel}
 
-<p class="lead">Het rapportageportaal brengt drie soorten informatie samen.</p>
-<div id="pillars" class="interactive"></div>
-
-::: {.notes}
-De financiële informatie is beperkt tot de belangrijkste posten. KPI’s verschillen per onderneming. De toelichting geeft context die cijfers alleen niet kunnen geven. Klik op een onderdeel voor concrete voorbeelden. Voor vastgoed bestaat de huidige aanlevering alleen uit financiële informatie.
-:::
-
-## Overzicht voor onderneming en Amerborgh {#overzicht}
-
-<p class="lead">In het portaal volgt de onderneming haar eigen ontwikkeling. Amerborgh ziet ook het gezamenlijke overzicht.</p>
-<div id="overview" class="interactive"></div>
-
-::: {.notes}
-De onderneming ziet alleen de bedrijven waarvoor de gebruiker toegang heeft. Amerborgh kan het gezamenlijke beeld en de afzonderlijke ondernemingen bekijken. De bedragen in beide voorbeelden zijn dezelfde. Alle voorbeeldbelangen zijn 100%. De echte totalen volgen de actieve bedrijfsselectie en ingestelde belangen; dit is een managementoverzicht, geen geconsolideerde jaarrekening. Zonder aangeleverd budget wordt geen budgetvergelijking getoond.
-:::
-
-## KPI’s per onderneming {#kpis}
-
-<p class="lead">Een gerichte selectie indicatoren die past bij de activiteiten van het bedrijf.</p>
-<div id="kpi-example" class="interactive"></div>
-
-::: {.notes}
-Het voorbeeld combineert omzet en bezetting over dezelfde maanden. Andere bedrijven kunnen andere KPI’s nodig hebben. Een beweging in dezelfde richting is op zichzelf geen bewijs van een oorzaak. De keuze van KPI’s wordt per onderneming afgestemd.
-:::
-
-## Kwalitatieve toelichting {#toelichting}
-
-<p class="lead">Wat is veranderd, wat verdient aandacht en waar kan Amerborgh ondersteunen?</p>
-<div id="qualitative" class="interactive"></div>
-
-::: {.notes}
-Korte, gerichte vragen geven context en helpen de bespreking voor te bereiden. De voorbeelden laten zien hoe antwoorden tussen maanden veranderen. Dit zijn fictieve antwoorden; we schrijven geen financiële oorzaak toe die de onderneming niet heeft genoemd.
-:::
-
-## Informatie invullen {#invullen}
-
-<p class="lead">Voorbeelden van de formulieren in het rapportageportaal. Je kunt de velden hier uitproberen.</p>
-<div id="entry-demo" class="interactive"></div>
-
-::: {.notes}
-Dit voorbeeld toont een selectie van financiële velden en voorbeeld-KPI’s voor Hotel Duin. Het volledige financiële formulier bevat ook andere kostenposten en balansposten. EBITDA wordt in de gewone handmatige invoer afgeleid en is geen invulveld. De kwalitatieve vragen sluiten aan op de standaardvoorbeeldvragen in het portaal. Bewaren en indienen worden alleen binnen deze demonstratie nagebootst.
-:::
-
-## Cijfers aanleveren {#aanleveren}
-
-<p class="lead">Waar mogelijk aansluiten op de bestanden die de onderneming al gebruikt.</p>
-<div id="delivery" class="interactive"></div>
-
-::: {.notes}
-De financiële informatie kan handmatig worden ingevuld of vanuit een ondersteund Excel- of CSV-bestand worden overgenomen. De herkenning wordt gecontroleerd voordat bedragen in het formulier komen. Indienen is een afzonderlijke bevestiging. Amerborgh kan het afgesproken LucaNet-exportbestand centraal voor meerdere bedrijven verwerken; een automatische AFAS- of LucaNet-verbinding is een vervolgstap. Met participaties stemmen we hun bestaande bestandsstructuur af. De demo leest geen eigen bestand en bewaart niets.
-:::
-
-## Doel van de rapportage {#gesprek}
-
-<p class="lead">Het rapportageportaal brengt de informatie vooraf bij elkaar voor de bespreking met de onderneming.</p>
+<p class="lead">Eén overzicht van resultaten en ontwikkelingen als basis voor het gesprek met de onderneming.</p>
 ```{=html}
 <div class="closing-grid">
-  <div><span class="large-number">01</span><h3>Resultaten volgen</h3><p>De belangrijkste cijfers en indicatoren over dezelfde periode.</p></div>
+  <div><span class="large-number">01</span><h3>Resultaten volgen</h3><p>De belangrijkste financiële cijfers en KPI’s bij elkaar, met hun ontwikkeling over de tijd.</p></div>
   <div><span class="large-number">02</span><h3>Aandachtspunten bespreken</h3><p>Veranderingen, kansen en risico’s vanuit de onderneming zelf.</p></div>
   <div><span class="large-number">03</span><h3>Ondersteuning bepalen</h3><p>Waar kan Amerborgh helpen en welke besluiten zijn nodig?</p></div>
 </div>
@@ -112,5 +58,92 @@ De financiële informatie kan handmatig worden ingevuld of vanuit een ondersteun
 ```
 
 ::: {.notes}
-Gebruik deze afsluiting om de inrichting per onderneming te bespreken. Het portaal brengt informatie samen; de betekenis en vervolgstappen worden met de onderneming besproken. Het contextdocument biedt de verdere toelichting.
+Begin met het doel van de rapportage en bespreek daarna welke informatie daarvoor nodig is. Het portaal brengt informatie samen; de betekenis en vervolgstappen worden met de onderneming besproken. Het contextdocument biedt de verdere toelichting.
+:::
+
+## De drie onderdelen {#drie-onderdelen}
+
+<p class="lead">Per onderneming vragen we een beperkte, relevante selectie informatie.</p>
+<div id="pillars" class="interactive"></div>
+
+::: {.notes}
+De financiële informatie is beperkt tot de belangrijkste posten. KPI’s verschillen per onderneming. De toelichting geeft context die cijfers alleen niet kunnen geven. Klik op een onderdeel voor concrete voorbeelden. Voor vastgoed bestaat de huidige aanlevering alleen uit financiële informatie.
+:::
+
+## Het financiële overzicht {#overzicht}
+
+<p class="lead">De onderneming volgt haar resultaten en de verschillen met eerdere perioden en het budget.</p>
+<div id="overview" class="interactive"></div>
+
+::: {.notes}
+De grafieken komen rechtstreeks uit het portaal. Hotel A en de bedragen zijn fictief. Dit is het financiële schermfragment van het eigen bedrijf, met dezelfde grafiektypen, kleuren en bediening. Het volledige overzicht bevat ook de belangrijkste bedragen bovenaan. Als een budget ontbreekt, wordt geen budgetvergelijking getoond.
+:::
+
+## KPI’s per onderneming {#kpis}
+
+<p class="lead">Bezetting, verkochte kamernachten en gemiddelde kamerprijs laten de ontwikkeling van Hotel A zien.</p>
+<div id="kpi-example" class="interactive"></div>
+
+::: {.notes}
+Dit zijn de originele KPI-grafieken. Andere ondernemingen krijgen de indicatoren die voor hun activiteiten relevant zijn. De vergelijking met eerdere maanden laat de ontwikkeling zien. Een verandering in KPI’s bewijst op zichzelf niet de oorzaak van een financieel resultaat.
+:::
+
+## Kwalitatieve toelichting {#toelichting}
+
+<p class="lead">Het bedrijf geeft context bij de cijfers en benoemt waar ondersteuning nodig is.</p>
+<div id="qualitative" class="interactive"></div>
+
+::: {.notes}
+De vragen zijn bestaande voorbeeldvragen uit het portaal en kunnen per onderneming worden ingesteld. De antwoorden zijn fictief. De ingediende toelichting is zichtbaar voor de onderneming en Amerborgh. Dit scherm toont de eigen antwoorden, geen automatisch gegenereerde AI-analyse.
+:::
+
+## Wat ziet Amerborgh? {#amerborgh}
+
+<p class="lead">De resultaten van de actieve bedrijven naast elkaar, met toegang tot de onderliggende informatie.</p>
+<div id="central-overview" class="interactive"></div>
+
+::: {.notes}
+Dit is de echte tabel Resultaten per bedrijf. De kolommen kunnen worden gesorteerd en een bedrijf kan worden geopend. Het portaal biedt daarnaast het gezamenlijke overzicht en rapportages per bedrijfstak. De totalen volgen de actieve selectie en de ingestelde eigendomspercentages. Dit is een managementoverzicht, geen geconsolideerde jaarrekening. Als een budget ontbreekt, wordt geen budgetvergelijking getoond.
+:::
+
+## Informatie aanleveren {#aanleveren}
+
+<p class="lead">Zelf invullen of financiële cijfers uit een bestaand bestand overnemen, controleren en indienen.</p>
+<div id="delivery" class="interactive"></div>
+
+::: {.notes}
+Gebruik de twee tabbladen om handmatige invoer en bestandsimport te laten zien. Het voorbeeldbestand is ingebouwd. De importcontrole gebruikt de echte herkenningscode en laat de bronregel bij ieder bedrag zien. In het formulier plaatsen is nog geen indiening. De gebruiker controleert de invoer en bevestigt het indienen afzonderlijk. De demo bewaart wijzigingen alleen zolang deze geopend blijft.
+:::
+
+## Wie levert wat aan? {#lucanet}
+
+<p class="lead">De aanlevering van financiële cijfers hangt af van het gebruik van LucaNet.</p>
+```{=html}
+<div class="responsibilities">
+  <div class="responsibility-head"><span></span><h3>Bedrijven via LucaNet</h3><h3>Overige bedrijven</h3></div>
+  <div><strong>Financiële informatie</strong><p>Amerborgh laadt de cijfers centraal in. Het bedrijf hoeft deze cijfers niet zelf aan te leveren.</p><p>Het bedrijf vult de cijfers in of levert ze aan via een bestand.</p></div>
+  <div><strong>KPI’s</strong><p>Het bedrijf vult de afgesproken KPI’s in.</p><p>Het bedrijf vult de afgesproken KPI’s in.</p></div>
+  <div><strong>Kwalitatieve toelichting</strong><p>Het bedrijf beantwoordt de vragen.</p><p>Het bedrijf beantwoordt de vragen.</p></div>
+</div>
+<p class="practical-note">Met de overige bedrijven stemmen we de bestandsindeling af op hun eigen administratie. Voor vastgoed vragen we alleen financiële informatie.</p>
+```
+
+::: {.notes}
+LucaNet is hier de route voor centrale financiële aanlevering. Ook deze bedrijven blijven verantwoordelijk voor hun KPI’s en antwoorden. Er wordt geen volledig automatische API-verbinding beloofd. Vastgoed is in de huidige inrichting uitgezonderd van KPI’s en kwalitatieve vragen.
+:::
+
+## Gebruikers en toegang {#gebruikers}
+
+<p class="lead">Iedere gebruiker krijgt een organisatie en een rol toegewezen.</p>
+```{=html}
+<div class="access-layout">
+  <div><h3>Organisatie</h3><p>Een account wordt gekoppeld aan een organisatie. Daar kunnen één of meerdere bedrijven onder vallen.</p></div>
+  <div><h3>Medewerker</h3><p>Kan informatie bekijken en aanleveren voor de bedrijven binnen de toegewezen organisatie.</p></div>
+  <div><h3>Beheerder</h3><p>Kan daarnaast gebruikers uitnodigen en accounts beheren binnen de eigen organisatie.</p></div>
+</div>
+<p class="practical-note">Spreek per onderneming af wie aanlevert en wie de gebruikers beheert. De organisatie en beheerdersrol kunnen later worden aangepast.</p>
+```
+
+::: {.notes}
+De rol en bedrijfsrechten worden afzonderlijk ingesteld. Een eventuele IT-rol is een aparte bevoegdheid en geeft niet vanzelf toegang tot bedrijfsgegevens. De presentatie hoeft niet alle beheeropties te behandelen.
 :::
