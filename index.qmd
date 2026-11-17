@@ -1,0 +1,116 @@
+---
+pagetitle: "Amerborgh | Het rapportageportaal"
+lang: nl
+format:
+  revealjs:
+    theme: simple
+    css: assets/demo.css
+    include-after-body: assets/demo.html
+    embed-resources: true
+    html-math-method: plain
+    title-slide: false
+    width: 1440
+    height: 900
+    margin: 0.04
+    center: false
+    transition: fade
+    slide-number: c/t
+    controls: true
+    controls-layout: edges
+    progress: true
+    navigation-mode: linear
+    history: true
+    hash: true
+    overview: true
+    menu: false
+    preview-links: false
+    slide-level: 2
+---
+
+## Het rapportageportaal {#start .cover}
+
+```{=html}
+<div class="cover-top"><img src="assets/amerborgh-logo.svg" alt="Amerborgh" class="brand"><span>Toelichting voor directie en ondernemingen</span></div>
+<div class="cover-title">Het rapportageportaal</div>
+<p class="cover-intro">Financiële informatie, KPI’s<br>en kwalitatieve toelichtingen</p>
+<div class="cover-rule"></div>
+<div class="contents">
+  <a href="#/drie-onderdelen"><span>01</span><strong>De rapportage</strong><small>Welke informatie vragen we?</small></a>
+  <a href="#/overzicht"><span>02</span><strong>Het overzicht</strong><small>Voor de onderneming en Amerborgh</small></a>
+  <a href="#/invullen"><span>03</span><strong>Aanleveren</strong><small>Een kort voorbeeld</small></a>
+</div>
+```
+
+::: {.notes}
+Deze presentatie ondersteunt het contextdocument. De schermen zijn vereenvoudigd en alle bedrijven en bedragen zijn fictief. De bedoeling is te laten zien welke informatie samenkomt en wat die toevoegt aan het gesprek; dit is geen handleiding voor alle functies.
+:::
+
+## De drie onderdelen {#drie-onderdelen}
+
+<p class="lead">Het rapportageportaal brengt drie soorten informatie samen.</p>
+<div id="pillars" class="interactive"></div>
+
+::: {.notes}
+De financiële informatie is beperkt tot de belangrijkste posten. KPI’s verschillen per onderneming. De toelichting geeft context die cijfers alleen niet kunnen geven. Klik op een onderdeel voor concrete voorbeelden. Voor vastgoed bestaat de huidige aanlevering alleen uit financiële informatie.
+:::
+
+## Overzicht voor onderneming en Amerborgh {#overzicht}
+
+<p class="lead">In het portaal volgt de onderneming haar eigen ontwikkeling. Amerborgh ziet ook het gezamenlijke overzicht.</p>
+<div id="overview" class="interactive"></div>
+
+::: {.notes}
+De onderneming ziet alleen de bedrijven waarvoor de gebruiker toegang heeft. Amerborgh kan het gezamenlijke beeld en de afzonderlijke ondernemingen bekijken. De bedragen in beide voorbeelden zijn dezelfde. Alle voorbeeldbelangen zijn 100%. De echte totalen volgen de actieve bedrijfsselectie en ingestelde belangen; dit is een managementoverzicht, geen geconsolideerde jaarrekening. Zonder aangeleverd budget wordt geen budgetvergelijking getoond.
+:::
+
+## KPI’s per onderneming {#kpis}
+
+<p class="lead">Een gerichte selectie indicatoren die past bij de activiteiten van het bedrijf.</p>
+<div id="kpi-example" class="interactive"></div>
+
+::: {.notes}
+Het voorbeeld combineert omzet en bezetting over dezelfde maanden. Andere bedrijven kunnen andere KPI’s nodig hebben. Een beweging in dezelfde richting is op zichzelf geen bewijs van een oorzaak. De keuze van KPI’s wordt per onderneming afgestemd.
+:::
+
+## Kwalitatieve toelichting {#toelichting}
+
+<p class="lead">Wat is veranderd, wat verdient aandacht en waar kan Amerborgh ondersteunen?</p>
+<div id="qualitative" class="interactive"></div>
+
+::: {.notes}
+Korte, gerichte vragen geven context en helpen de bespreking voor te bereiden. De voorbeelden laten zien hoe antwoorden tussen maanden veranderen. Dit zijn fictieve antwoorden; we schrijven geen financiële oorzaak toe die de onderneming niet heeft genoemd.
+:::
+
+## Informatie invullen {#invullen}
+
+<p class="lead">Voorbeelden van de formulieren in het rapportageportaal. Je kunt de velden hier uitproberen.</p>
+<div id="entry-demo" class="interactive"></div>
+
+::: {.notes}
+Dit voorbeeld toont een selectie van financiële velden en voorbeeld-KPI’s voor Hotel Duin. Het volledige financiële formulier bevat ook andere kostenposten en balansposten. EBITDA wordt in de gewone handmatige invoer afgeleid en is geen invulveld. De kwalitatieve vragen sluiten aan op de standaardvoorbeeldvragen in het portaal. Bewaren en indienen worden alleen binnen deze demonstratie nagebootst.
+:::
+
+## Cijfers aanleveren {#aanleveren}
+
+<p class="lead">Waar mogelijk aansluiten op de bestanden die de onderneming al gebruikt.</p>
+<div id="delivery" class="interactive"></div>
+
+::: {.notes}
+De financiële informatie kan handmatig worden ingevuld of vanuit een ondersteund Excel- of CSV-bestand worden overgenomen. De herkenning wordt gecontroleerd voordat bedragen in het formulier komen. Indienen is een afzonderlijke bevestiging. Amerborgh kan het afgesproken LucaNet-exportbestand centraal voor meerdere bedrijven verwerken; een automatische AFAS- of LucaNet-verbinding is een vervolgstap. Met participaties stemmen we hun bestaande bestandsstructuur af. De demo leest geen eigen bestand en bewaart niets.
+:::
+
+## Doel van de rapportage {#gesprek}
+
+<p class="lead">Het rapportageportaal brengt de informatie vooraf bij elkaar voor de bespreking met de onderneming.</p>
+```{=html}
+<div class="closing-grid">
+  <div><span class="large-number">01</span><h3>Resultaten volgen</h3><p>De belangrijkste cijfers en indicatoren over dezelfde periode.</p></div>
+  <div><span class="large-number">02</span><h3>Aandachtspunten bespreken</h3><p>Veranderingen, kansen en risico’s vanuit de onderneming zelf.</p></div>
+  <div><span class="large-number">03</span><h3>Ondersteuning bepalen</h3><p>Waar kan Amerborgh helpen en welke besluiten zijn nodig?</p></div>
+</div>
+<div class="closing-bottom"><strong>Samen afstemmen per onderneming</strong><span>De relevante KPI’s, de vragen en een praktische manier van aanleveren.</span></div>
+```
+
+::: {.notes}
+Gebruik deze afsluiting om de inrichting per onderneming te bespreken. Het portaal brengt informatie samen; de betekenis en vervolgstappen worden met de onderneming besproken. Het contextdocument biedt de verdere toelichting.
+:::

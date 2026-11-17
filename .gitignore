@@ -1,0 +1,5 @@
+.quarto/
+index_files/
+*.log
+.DS_Store
+Thumbs.db
