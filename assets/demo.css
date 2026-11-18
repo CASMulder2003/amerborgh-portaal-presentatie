@@ -221,6 +221,7 @@ body { background:var(--page); }
 .screen-tabs { display:flex; gap:8px; margin:0 0 14px; }
 .screen-tabs button { font-size:18px; }
 #overview iframe.real-portal { height:650px; }
+#kpi-example iframe.real-portal { height:740px; }
 #delivery iframe.real-portal { height:565px; }
 #delivery .delivery-layout { grid-template-columns:minmax(0,3fr) minmax(240px,1fr); gap:28px; }
 #delivery .steps { margin-bottom:12px; }

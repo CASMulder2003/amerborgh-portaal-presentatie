@@ -80,7 +80,6 @@ De grafieken komen rechtstreeks uit het portaal. Bedrijf A en de bedragen zijn f
 
 ## KPI’s per onderneming {#kpis}
 
-<p class="lead">KPI’s tonen de ontwikkeling per onderneming. Een budget biedt een vergelijking, ook wanneer cijfers van vorig jaar nog ontbreken.</p>
 <div id="kpi-example" class="interactive"></div>
 
 ::: {.notes}
@@ -89,7 +88,7 @@ De neutrale namen KPI 1, KPI 2 en KPI 3 laten alleen de weergave zien; het zijn 
 
 ## Kwalitatieve toelichting {#toelichting}
 
-<p class="lead">Vragen over resultaten, ontwikkelingen en prioriteiten, met ruimte voor andere onderwerpen die de onderneming wil bespreken.</p>
+<p class="lead">Vragen over resultaten, ontwikkelingen en prioriteiten, met ruimte voor andere relevante toelichtingen.</p>
 <div id="qualitative" class="interactive"></div>
 
 ::: {.notes}
@@ -98,7 +97,7 @@ De eerste drie voorlopige vragen volgen het met Loes afgestemde document. De vie
 
 ## Wat ziet Amerborgh? {#amerborgh}
 
-<p class="lead">Vergelijk bedrijven op omzet, nettoresultaat en EBITDA, naast budget en vorig jaar. Klik op een bedrijf voor het volledige overzicht.</p>
+<p class="lead">Amerborgh ziet dezelfde cijfers als hiervoor en kan ondernemingen naast elkaar bekijken. Zo ontstaat snel een overzicht van hoe het binnen de verschillende ondernemingen gaat.</p>
 <div id="central-overview" class="interactive"></div>
 
 ::: {.notes}

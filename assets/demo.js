@@ -4,7 +4,7 @@
   const state={pillar:0};
   const mount=(id,html)=>{document.getElementById(id).innerHTML=html;};
   const button=(label,action,value,pressed=false,cls='')=>`<button type="button" data-action="${action}" data-value="${value}" aria-pressed="${pressed}" class="${cls}">${label}</button>`;
-  const frame=(view,id)=>`<div class="portal-viewport" popover="manual"><div class="portal-preview-bar"><button type="button" class="portal-expand" data-action="expand" aria-expanded="false" aria-controls="${id}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>Vergroten</span></button></div><iframe id="${id}" class="real-portal" title="Rapportageportaal: ${view}" src="assets/portal/index.html?view=${view}" loading="eager" sandbox="allow-scripts allow-same-origin"></iframe></div>`;
+  const frame=(view,id)=>`<div class="portal-viewport" popover="manual"><div class="portal-preview-bar"><button type="button" class="portal-expand" data-action="expand" aria-expanded="false" aria-controls="${id}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>Vergroten</span></button></div><iframe id="${id}" class="real-portal" title="Rapportageportaal: ${view}" src="assets/portal/index.html?view=${view}&amp;v=${window.portalDemoRevision}" loading="eager" sandbox="allow-scripts allow-same-origin"></iframe></div>`;
   function setExpanded(viewport,expanded){
     viewport.dataset.expanded=String(expanded);
     const control=viewport.querySelector('.portal-expand');

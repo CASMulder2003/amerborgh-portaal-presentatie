@@ -3,6 +3,10 @@ import { createRoot } from 'react-dom/client';
 import Dashboard, { CompanyResults } from '@portal/pages/reporting/overview/Dashboard.jsx';
 import TrendChart from '@portal/pages/reporting/charts/TrendChart.jsx';
 import { KpiCompanyFigures } from '@portal/pages/reporting/overview/KpiOverview.jsx';
+import { MonthlyFinancialFigures } from '@portal/pages/reporting/overview/MonthFigures.jsx';
+import { monthlyValues } from '@portal/pages/reporting/overview/monthComparison.js';
+import OverviewPeriodTabs from '@portal/pages/reporting/periods/OverviewPeriodTabs.jsx';
+import { months } from '@portal/pages/reporting/shared/format.js';
 import { FormEditor } from '@portal/pages/reporting/forms/FormEditor.jsx';
 import FormHub from '@portal/pages/reporting/forms/FormHub.jsx';
 import BudgetPage from '@portal/pages/reporting/budgets/BudgetPage.jsx';
@@ -94,7 +98,7 @@ function Demo() {
       if(section==='invoer'&&query.get('task')==='budget') {setBudgetYear(Number(query.get('year'))||2027);setView('budget');}
       else if(query.has('kind')) {setKind(query.get('kind'));setView(centralDemo&&section!=='invoer'?'publication':'form');}
       else if(section==='invoer')setView('input');
-      else if(query.has('company')) {setTab(query.get('view')||'samenvatting');setView('company');}
+      else if(query.has('company')) {setTab(query.get('view')||'samenvatting');setView(!centralDemo&&initialView==='kpi'?'kpi':'company');}
       if(query.has('basis')) setBasis(query.get('basis'));
       window.scrollTo(0,0);
     };
@@ -117,15 +121,16 @@ function Demo() {
   },[]);
   const oneSelection={year,month,company:rows[company].company.id};
   const companyFromCentral=centralDemo && !['central','central-table'].includes(view);
-  return <main className="reporting-workspace">
+  return <main className={`reporting-workspace${!centralDemo&&['company','kpi'].includes(view)?' presentation-figures':''}`}>
     {companyFromCentral && <>
       <a className="report-back" href="#central" onClick={event=>{event.preventDefault();history.replaceState(null,'','#central');setView(initialView);setBasis('ytd');setTab('samenvatting');window.scrollTo(0,0);}}>← Terug naar bedrijfstabel</a>
       <header className="presentation-heading"><h1>{rows[company].company.name}</h1></header>
     </>}
     {['central','central-table'].includes(view) && <header className="presentation-heading"><h1>Amerborgh</h1><p>Januari t/m augustus 2026</p></header>}
-    {view==='company'&&(centralDemo?<Dashboard data={{...data,companies:[rows[company]]}} context={context} selection={oneSelection} view={tab} basis={basis} section="bedrijven" loading={false}/>:<div className="summary-charts company-summary-charts">{[['revenue','Omzet'],['net_result','Nettoresultaat'],['ebitda','EBITDA']].map(([field,title])=><TrendChart key={field} title={title} defaultStyle={field==='ebitda'?'bridge':'line'} bridgeValues={field==='ebitda'?rows[company].cumulative.actual:undefined} bridgePeriod="Januari t/m Augustus 2026" points={rows[company].series.map(point=>({label:point.period,actual:point.actual[field],previous:point.previous[field],budget:point.budget[field]}))} series={[{key:'actual',label:'2026'},{key:'previous',label:'2025'},{key:'budget',label:'Budget'}]}/>)}</div>)}
+    {!centralDemo&&['company','kpi'].includes(view)&&<div className="overview-period"><p>{basis==='ytd'?`Januari t/m ${months[month-1].toLowerCase()} ${year}`:`${months[month-1]} ${year}`}</p><OverviewPeriodTabs section="bedrijven" selection={oneSelection} view={view==='kpi'?'kpi':'samenvatting'} basis={basis}/></div>}
+    {view==='company'&&(centralDemo?<Dashboard data={{...data,companies:[rows[company]]}} context={context} selection={oneSelection} view={tab} basis={basis} section="bedrijven" loading={false}/>:basis==='month'?<MonthlyFinancialFigures values={monthlyValues(rows[company].series,month)} year={year} month={month}/>:<div className="summary-charts company-summary-charts">{[['revenue','Omzet'],['net_result','Nettoresultaat'],['ebitda','EBITDA']].map(([field,title])=><TrendChart key={field} title={title} defaultStyle={field==='ebitda'?'bridge':'line'} bridgeValues={field==='ebitda'?rows[company].cumulative.actual:undefined} bridgePeriod="Januari t/m Augustus 2026" points={rows[company].series.map(point=>({label:point.period,actual:point.actual[field],previous:point.previous[field],budget:point.budget[field]}))} series={[{key:'actual',label:'2026'},{key:'previous',label:'2025'},{key:'budget',label:'Budget'}]}/>)}</div>)}
     {(view==='central'||view==='central-table')&&<CompanyResults data={data} context={context} selection={selection} basis={basis}/>}
-    {view==='kpi'&&<KpiCompanyFigures row={rows[company]} year={year} month={month} basis="ytd"/>}
+    {view==='kpi'&&<KpiCompanyFigures row={rows[company]} year={year} month={month} basis={basis}/>}
     {view==='qualitative'&&<PublicationContent form={makeDemoForm('qualitative',{submitted:true})} selection={oneSelection} kind="qualitative" central compact/>}
     {view==='publication'&&<PublicationContent form={getDemoForm(formPath(kind,company))} selection={oneSelection} kind={kind} central compact/>}
     {view==='form'&&<LocalForm kind={kind} companyIndex={company}/>}

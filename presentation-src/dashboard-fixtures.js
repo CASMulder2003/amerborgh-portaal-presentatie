@@ -57,7 +57,7 @@ function companyMonth(index, m, variant = 'actual') {
   }).map(([key, value]) => [key, money(value)]));
   const values = {
     kpi_1: money(revenue * (variant === 'budget' ? 1.08 : 1.05) / 1000),
-    kpi_2: money(90 + m * .3 + [0,-1,1][index] + (variant === 'budget' ? .8 : 0)),
+    kpi_2: money(90 + m * .3 + [0,-1,1][index] + (variant === 'budget' ? 4 : 0)),
     kpi_3: String([85,62,48][index] + m * 3 + (variant === 'budget' ? 5 : 0)),
   };
   return { figures, kpis: companyKpiFields.map(field => ({ ...field, value: values[field.id] })) };

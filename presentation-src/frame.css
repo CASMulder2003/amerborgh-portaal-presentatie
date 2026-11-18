@@ -1,5 +1,6 @@
 /* Only the presentation viewport. Portal component rules remain unchanged. */
 body { padding: 20px; }
+.reporting-workspace.presentation-figures { padding:0; }
 .presentation-heading { margin-bottom: 20px; }
 .presentation-heading h1 { margin: 0; font-size: 30px; }
 .presentation-heading p { margin: 4px 0 0; color: var(--color-muted); font-size: 13px; }

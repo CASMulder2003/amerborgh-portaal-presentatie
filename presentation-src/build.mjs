@@ -2,8 +2,9 @@
 import path from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
-import { writeFile } from 'node:fs/promises';
-import { withKpiBudgetPreview } from './kpi-budget-preview.mjs';
+import { readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { withKpiBudgetPreview, withMonthlyKpiBudgetPreview } from './kpi-budget-preview.mjs';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const portal = process.env.PORTAL_SOURCE;
 if (!portal) throw new Error('Set PORTAL_SOURCE to the portal frontend directory.');
@@ -25,6 +26,7 @@ await build({
     transform(code, id) {
       const relative = path.relative(source, id).split(path.sep).join('/');
       if (relative === 'pages/reporting/overview/KpiOverview.jsx') return withKpiBudgetPreview(code);
+      if (relative === 'pages/reporting/overview/MonthFigures.jsx') return withMonthlyKpiBudgetPreview(code);
       if (exportsFor[relative]) return code + '\nexport { ' + exportsFor[relative].join(', ') + ' };\n';
     },
   }, react()],
@@ -35,5 +37,8 @@ await build({
   } },
   build: { outDir: path.resolve(here, '../assets/portal'), emptyOutDir: true, sourcemap: false },
 });
+// Change the frame URL when its hashed bundle changes, including in cached decks.
+const revision = createHash('sha256').update(await readFile(path.resolve(here, '../assets/portal/index.html'))).digest('hex').slice(0,12);
+await writeFile(path.resolve(here, '../assets/portal-revision.js'), `window.portalDemoRevision=${JSON.stringify(revision)};\n`);
 const commit = execFileSync('git', ['-C', portal, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
 await writeFile(path.join(here, 'portal-source.json'), JSON.stringify({ repository: 'CASMulder2003/amerborgh-portaal', commit, components: Object.keys(exportsFor), data: 'Synthetic Bedrijf A, Bedrijf B, Bedrijf C; no production API.', preview: 'KPI budget comparison is a presentation-only addition.' }, null, 2) + '\n');
