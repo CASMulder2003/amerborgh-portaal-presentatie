@@ -32,10 +32,10 @@ format:
 ```{=html}
 <div class="cover-top"><img src="assets/amerborgh-logo.svg" alt="Amerborgh" class="brand"></div>
 <div class="cover-title">Het rapportageportaal</div>
-<p class="cover-intro">Financiële informatie, KPI’s<br>en kwalitatieve toelichtingen</p>
+<p class="cover-intro">Financiële informatie, KPI’s en kwalitatieve toelichtingen</p>
 <div class="cover-rule"></div>
 <div class="contents">
-  <a href="#/doel"><span>01</span><strong>Doel en inhoud</strong><small>Welke informatie verzamelen we?</small></a>
+  <a href="#/doel"><span>01</span><strong>Doel en inhoud</strong><small>Wat willen we met dit portaal bereiken?</small></a>
   <a href="#/overzicht"><span>02</span><strong>Het portaal</strong><small>Voor de onderneming en Amerborgh</small></a>
   <a href="#/aanleveren"><span>03</span><strong>Aanleveren en toegang</strong><small>Wie doet wat?</small></a>
 </div>
