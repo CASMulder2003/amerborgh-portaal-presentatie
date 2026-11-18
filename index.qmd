@@ -54,7 +54,6 @@ Deze presentatie ondersteunt het contextdocument. De schermen gebruiken de origi
   <div><span class="large-number">02</span><h3>Operationele en commerciële ontwikkeling</h3><p>Welke indicatoren laten zien hoe de activiteiten van de onderneming zich ontwikkelen?</p></div>
   <div><span class="large-number">03</span><h3>Aandacht en ondersteuning</h3><p>Wat speelt er binnen de onderneming en waar kan Amerborgh helpen?</p></div>
 </div>
-<div class="closing-bottom"><strong>In de kwartaalbespreking</strong><span>Afwijkingen toelichten, de jaarverwachting bespreken en bepalen welke actie nodig is.</span></div>
 ```
 
 ::: {.notes}
