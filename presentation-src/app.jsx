@@ -1,15 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { CompanyResults, CompanyDashboard } from '@portal/pages/reporting/overview/Dashboard.jsx';
+import { CompanyResults } from '@portal/pages/reporting/overview/Dashboard.jsx';
 import TrendChart from '@portal/pages/reporting/charts/TrendChart.jsx';
 import { KpiCompanyFigures } from '@portal/pages/reporting/overview/KpiOverview.jsx';
 import { FormEditor } from '@portal/pages/reporting/forms/FormEditor.jsx';
-import { FileReview } from '@portal/pages/reporting/imports/FileImport.jsx';
-import FileDropZone from '@portal/pages/reporting/imports/FileDropZone.jsx';
 import { PublicationContent } from '@portal/pages/reporting/reports/ReportReader.jsx';
-import Modal from '@portal/components/Modal.jsx';
-import { data, context, selection, companyData, rows, year, month } from './dashboard-fixtures.js';
-import { makeDemoForm, formPath, financialSchema, importWorkbook, demoTarget, importValues } from './form-fixtures.js';
+import { data, context, selection, rows, year, month } from './dashboard-fixtures.js';
+import { makeDemoForm, formPath, financialSchema, demoActual } from './form-fixtures.js';
 import { registerDemoForm } from './local-api.js';
 import '@portal/styles/tokens.css';
 import '@portal/styles/global.css';
@@ -26,7 +23,21 @@ import './frame.css';
 const initialView = new URLSearchParams(location.search).get('view') || 'company';
 function LocalForm({kind='financial', empty=false, revision=0, supplied}) {
   const initial = useMemo(() => registerDemoForm(supplied||makeDemoForm(kind, {empty})), [kind, empty, revision, supplied]);
-  return <FormEditor key={`${kind}-${empty}-${revision}`} initial={initial} path={formPath(kind)} reload={() => {}} />;
+  function exampleFile(event) {
+    const entry=event.target.closest('.file-import-entry');
+    if(!entry || !event.target.closest('button')) return;
+    event.preventDefault(); event.stopPropagation();
+    const input=event.currentTarget.querySelector('input[type="file"]');
+    if(!input)return;
+    const actual={...demoActual};
+    for(const field of ['revenue','net_result','cash']) actual[field]=(Number(actual[field])+1500).toFixed(2);
+    const csv=['Post;Augustus 2026',...financialSchema.map(field=>`${field.label};${actual[field.id].replace('.',',')}`)].join('\r\n');
+    const transfer=new DataTransfer();
+    transfer.items.add(new File([csv],'Hotel A - augustus 2026.csv',{type:'text/csv'}));
+    input.files=transfer.files;
+    input.dispatchEvent(new Event('change',{bubbles:true}));
+  }
+  return <div onClickCapture={exampleFile}><FormEditor key={`${kind}-${empty}-${revision}`} initial={initial} path={formPath(kind)} reload={() => {}} /></div>;
 }
 function Demo() {
   const [view,setView]=useState(initialView);
@@ -34,19 +45,20 @@ function Demo() {
   const [company,setCompany]=useState(0);
   const [tab,setTab]=useState('samenvatting');
   const [basis,setBasis]=useState('ytd');
-  const [step,setStep]=useState(0);
   const [revision,setRevision]=useState(0);
-  const [importedForm,setImportedForm]=useState(null);
-  const notifyStep = next => {
-    setStep(next);
-    parent.postMessage({type:'portal-demo-step', step:next}, location.origin);
-    window.scrollTo(0,0);
-  };
   useEffect(() => {
+    let wasOpen=false;
+    const dialogState=()=>{
+      const open=Boolean(document.querySelector('dialog[open]'));
+      if(open===wasOpen)return;
+      wasOpen=open;
+      parent.postMessage({type:'portal-dialog',open},location.origin);
+    };
+    const observer=new MutationObserver(dialogState);
+    observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open']});
     const receive = event => {
       if(event.origin!==location.origin || event.source!==parent || event.data?.type!=='portal-demo') return;
       if(event.data.view) {setView(event.data.view);setTab('samenvatting');setCompany(0);}
-      if(Number.isInteger(event.data.step)) {setStep(event.data.step);setRevision(r=>r+1);setImportedForm(null);}
       window.scrollTo(0,0);
     };
     const links = event => {
@@ -62,7 +74,7 @@ function Demo() {
     };
     window.addEventListener('message',receive);
     document.addEventListener('click',links);
-    return()=>{window.removeEventListener('message',receive);document.removeEventListener('click',links);};
+    return()=>{observer.disconnect();window.removeEventListener('message',receive);document.removeEventListener('click',links);};
   },[]);
   const oneSelection={year,month,company:rows[company].company.id};
   return <main className="reporting-workspace">
@@ -72,11 +84,6 @@ function Demo() {
     {view==='kpi'&&<KpiCompanyFigures row={rows[company]} year={year} month={month} basis="ytd"/>}
     {view==='qualitative'&&<PublicationContent form={makeDemoForm('qualitative',{submitted:true})} selection={oneSelection} kind="qualitative" central compact/>}
     {view==='form'&&<LocalForm kind={kind} revision={revision}/>}
-    {view==='import'&&<>
-      {step===0&&<><div className="report-company-heading"><div><p className="eyebrow">Hotel A · Augustus 2026</p><h2>Financiële informatie</h2></div></div><div onClickCapture={event=>{if(event.target.closest('button')){event.preventDefault();event.stopPropagation();notifyStep(1);}}}><FileDropZone enabled onFiles={()=>notifyStep(1)} inputDisabled={false} dropDescription="Augustus 2026"/></div></>}
-      {step===1&&<Modal title="Bestand importeren" onClose={()=>notifyStep(0)} className="file-import-dialog sheet-dialog"><FileReview data={importWorkbook} schema={financialSchema} target={demoTarget} values={importValues} onClose={()=>notifyStep(0)} onApply={changes=>{const form=makeDemoForm('financial',{empty:true});form.data.actual=Object.fromEntries(changes.map(change=>[change.field,change.value]));setImportedForm(form);notifyStep(2);}}/></Modal>}
-      {step===2&&<LocalForm revision={revision} supplied={importedForm}/>}
-    </>}
   </main>;
 }
 createRoot(document.getElementById('root')).render(<Demo/>);

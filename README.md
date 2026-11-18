@@ -4,6 +4,8 @@ Interactieve toelichting voor directie en ondernemingen, gemaakt met Quarto en r
 
 ## Bekijken
 
+[Open de presentatie](https://casmulder2003.github.io/amerborgh-portaal-presentatie/)
+
 Open de presentatie via GitHub Pages of een lokale webserver. De interactieve schermen laden uit `assets/portal`, dus openen via `file://` is niet voldoende. Lokaal:
 
 ```sh

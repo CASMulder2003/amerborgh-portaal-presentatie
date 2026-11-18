@@ -25,6 +25,15 @@ resetDemoForms();
 export async function apiRequest(path, request, {signal} = {}) {
   if (signal?.aborted) throw new DOMException('Aanvraag geannuleerd.', 'AbortError');
   const key = normalizePath(path);
+  // The presentation supplies a built-in CSV; workbook decoding stays local.
+  if (key === 'import-file/' && request instanceof FormData) {
+    const file = request.get('file');
+    if (!(file instanceof File) || file.name !== 'Hotel A - augustus 2026.csv') {
+      throw failure('Gebruik het voorbeeldbestand in deze presentatie.');
+    }
+    const rows = (await file.text()).split(/\r?\n/).filter(Boolean).map(line => line.split(';'));
+    return {filename: file.name, sheets: [{name: 'Hotel A', rows}]};
+  }
   const stored = forms.get(key);
   if (!stored) throw failure('Dit onderdeel is niet beschikbaar in deze demonstratie.', 404);
   if (request === undefined) return clone(stored);

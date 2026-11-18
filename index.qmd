@@ -112,7 +112,7 @@ Dit is de echte tabel Resultaten per bedrijf. De kolommen kunnen worden gesortee
 <div id="delivery" class="interactive"></div>
 
 ::: {.notes}
-Gebruik de twee tabbladen om handmatige invoer en bestandsimport te laten zien. Het voorbeeldbestand is ingebouwd. De importcontrole gebruikt de echte herkenningscode en laat de bronregel bij ieder bedrag zien. In het formulier plaatsen is nog geen indiening. De gebruiker controleert de invoer en bevestigt het indienen afzonderlijk. De demo bewaart wijzigingen alleen zolang deze geopend blijft.
+Het invulformulier bevat ook de knop voor bestandsimport. Deze opent in de presentatie een ingebouwd voorbeeldbestand. De importcontrole gebruikt de echte herkenningscode en laat de bronregel bij ieder bedrag zien. In het formulier plaatsen is nog geen indiening. De gebruiker controleert de invoer en bevestigt het indienen afzonderlijk. De demo bewaart wijzigingen alleen zolang deze geopend blijft.
 :::
 
 ## Wie levert wat aan? {#lucanet}
