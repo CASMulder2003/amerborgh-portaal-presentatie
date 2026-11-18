@@ -37,6 +37,62 @@ const money = value => Number(value).toFixed(2);
 const periods = Array.from({ length: month }, (_, n) => `${year}-${String(n + 1).padStart(2, '0')}`);
 const forms = Object.fromEntries(['financial', 'kpi', 'qualitative'].map(kind => [kind, { status: 'submitted' }]));
 
+// Independent fictional monthly observations. Budgets follow planned seasons;
+// actuals and prior-year values fluctuate without a fixed offset or growth rate.
+const kpiMonths = [
+  {
+    kpi_1: {
+      actual: [342.8, 361.2, 438.6, 407.3, 426.8, 389.5, 452.1, 417.6],
+      previous: [356.4, 339.8, 371.2, 411.6, 398.7, 437.4, 406.9, 435.2],
+      budget: [355, 355, 400, 410, 425, 425, 435, 440],
+    },
+    kpi_2: {
+      actual: [76.8, 73.2, 80.4, 86.1, 82.3, 78.6, 69.4, 75.8],
+      previous: [72.4, 75.1, 77.3, 81.5, 84.2, 76.8, 73.6, 70.9],
+      budget: [75, 75, 79, 82, 84, 82, 76, 74],
+    },
+    kpi_3: {
+      actual: [116, 94, 108, 87, 102, 119, 111, 96],
+      previous: [104, 102, 93, 99, 107, 101, 118, 109],
+      budget: [105, 100, 110, 100, 110, 115, 115, 110],
+    },
+  },
+  {
+    kpi_1: {
+      actual: [278.4, 302.6, 286.1, 325.8, 351.2, 339.7, 294.3, 318.6],
+      previous: [291.7, 274.5, 309.8, 301.2, 328.6, 346.1, 312.8, 305.4],
+      budget: [290, 290, 305, 320, 335, 345, 310, 315],
+    },
+    kpi_2: {
+      actual: [64.2, 68.7, 66.1, 73.8, 77.6, 71.3, 79.2, 82.4],
+      previous: [67.1, 63.8, 69.4, 65.9, 72.3, 75.6, 73.1, 77.8],
+      budget: [66, 67, 69, 72, 74, 76, 78, 80],
+    },
+    kpi_3: {
+      actual: [71, 65, 82, 78, 92, 84, 67, 74],
+      previous: [68, 73, 71, 85, 80, 89, 75, 69],
+      budget: [70, 70, 80, 82, 85, 85, 75, 72],
+    },
+  },
+  {
+    kpi_1: {
+      actual: [219.6, 207.3, 248.8, 231.4, 226.7, 264.2, 257.9, 239.5],
+      previous: [205.1, 221.8, 229.4, 245.6, 218.3, 237.9, 269.1, 251.7],
+      budget: [215, 220, 235, 240, 235, 250, 260, 250],
+    },
+    kpi_2: {
+      actual: [88.4, 85.7, 89.2, 81.6, 84.8, 90.1, 87.3, 91.5],
+      previous: [84.7, 87.2, 83.6, 86.4, 88.1, 85.9, 89.4, 87.6],
+      budget: [87, 87, 88, 87, 88, 89, 90, 90],
+    },
+    kpi_3: {
+      actual: [54, 63, 58, 71, 65, 60, 76, 68],
+      previous: [61, 55, 64, 59, 69, 66, 62, 73],
+      budget: [58, 58, 62, 65, 68, 65, 70, 70],
+    },
+  },
+];
+
 function companyMonth(index, m, variant = 'actual') {
   const baseRevenue = [320000,220000,170000][index] + m * [18000,14000,11000][index]
     + [0,-7000,12000,5000,16000,8000,-6000,0,10000,14000,22000,5000][m-1];
@@ -55,11 +111,9 @@ function companyMonth(index, m, variant = 'actual') {
     receivables: Math.round(revenue * .1), cash: [110000, 80000, 65000][index] + m * 3500,
     payables: Math.round(revenue * .07),
   }).map(([key, value]) => [key, money(value)]));
-  const values = {
-    kpi_1: money(revenue * (variant === 'budget' ? 1.08 : 1.05) / 1000),
-    kpi_2: money(90 + m * .3 + [0,-1,1][index] + (variant === 'budget' ? 4 : variant === 'previous' ? -2.2 : 0)),
-    kpi_3: String([85,62,48][index] + m * 3 + (variant === 'budget' ? 5 : variant === 'previous' ? -6 : 0)),
-  };
+  const values = Object.fromEntries(companyKpiFields.map(field => [field.id,
+    String(kpiMonths[index][field.id][variant][m - 1]),
+  ]));
   return { figures, kpis: companyKpiFields.map(field => ({ ...field, value: values[field.id] })) };
 }
 const cumulative = (series, kind) => Object.fromEntries(financialFields.map(field => [field.id,
