@@ -237,6 +237,8 @@ body { background:var(--page); }
 .reveal .responsibilities h3 { font:600 var(--text-size)/1.35 var(--body); margin:0; }
 .reveal .responsibilities p { font:var(--text-size)/1.45 var(--body); margin:0; }
 .responsibilities strong { font:600 var(--text-size)/1.35 var(--body); }
+.responsibility-shared p { grid-column:2 / 4; max-width:42em; }
+.responsibilities > div { padding:24px 8px; }
 .reveal .practical-note { margin-top:32px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:var(--text-size); }
 .reveal .responsibilities + .practical-note { border-top:0; padding-top:0; }
 .access-layout { display:grid; grid-template-columns:repeat(3,1fr); gap:42px; margin-top:65px; }
@@ -249,7 +251,14 @@ body { background:var(--page); }
 .portal-viewport:popover-open { display:block; position:fixed; inset:16px; width:calc(100vw - 32px); height:calc(100dvh - 32px); max-width:none; max-height:none; margin:0; padding:0; border:0; border-radius:8px; overflow:hidden; background:var(--page); transform:none; filter:none; opacity:1; }
 .portal-viewport::backdrop { background:rgba(40,36,32,.28); }
 .reveal .portal-viewport:popover-open iframe.real-portal { width:100%; height:100% !important; max-height:none; border:0; border-radius:0; margin:0; }
-#delivery iframe.real-portal { height:650px; }
+#delivery iframe.real-portal { height:590px; }
+.portal-preview-bar { display:flex; justify-content:flex-end; align-items:center; min-height:34px; margin:0 0 8px; }
+.interactive .portal-preview-bar button { display:inline-flex; align-items:center; gap:8px; font:17px/1.2 var(--body); padding:7px 10px; border:0; background:transparent; }
+.interactive .portal-preview-bar button:hover { background:var(--warm); }
+.portal-viewport:popover-open .portal-preview-bar { height:48px; padding:0 14px; margin:0; background:white; border-bottom:1px solid var(--line); }
+.reveal .portal-viewport[data-expanded="true"]:popover-open iframe.real-portal { height:calc(100% - 48px) !important; }
+.portal-viewport[data-dialog-open="true"]:not([data-expanded="true"]) .portal-preview-bar { display:none; }
+.reveal .demo-instruction { font:18px/1.4 var(--body); color:var(--muted); margin:12px 0 0; }
 /* Financial content shares one aligned grid and a common reading order. */
 .financial-detail { margin-top:32px; }
 .financial-columns { display:grid; grid-template-columns:2fr 1fr; gap:40px; }

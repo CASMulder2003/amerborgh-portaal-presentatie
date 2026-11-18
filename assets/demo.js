@@ -4,19 +4,28 @@
   const state={pillar:0};
   const mount=(id,html)=>{document.getElementById(id).innerHTML=html;};
   const button=(label,action,value,pressed=false,cls='')=>`<button type="button" data-action="${action}" data-value="${value}" aria-pressed="${pressed}" class="${cls}">${label}</button>`;
-  const frame=(view,id)=>`<div class="portal-viewport" popover="manual"><iframe id="${id}" class="real-portal" title="Rapportageportaal: ${view}" src="assets/portal/index.html?view=${view}" loading="eager" sandbox="allow-scripts allow-same-origin"></iframe></div>`;
+  const frame=(view,id)=>`<div class="portal-viewport" popover="manual"><div class="portal-preview-bar"><button type="button" class="portal-expand" data-action="expand" aria-expanded="false" aria-controls="${id}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>Vergroten</span></button></div><iframe id="${id}" class="real-portal" title="Rapportageportaal: ${view}" src="assets/portal/index.html?view=${view}" loading="eager" sandbox="allow-scripts allow-same-origin"></iframe></div>`;
+  function setExpanded(viewport,expanded){
+    viewport.dataset.expanded=String(expanded);
+    const control=viewport.querySelector('.portal-expand');
+    control.setAttribute('aria-expanded',String(expanded));
+    control.querySelector('span').textContent=expanded?'Terug naar presentatie':'Vergroten';
+    if(expanded&&!viewport.matches(':popover-open'))viewport.showPopover();
+    if(!expanded&&viewport.dataset.dialogOpen!=='true'&&viewport.matches(':popover-open'))viewport.hidePopover();
+    if(!expanded)control.focus({preventScroll:true});
+  }
   function renderPillars() {
     const items=[
       {title:'Financiële cijfers'},
-      {title:'KPI’s',heading:'Circa drie tot vijf KPI’s per bedrijf',text:'We kiezen indicatoren die passen bij de activiteiten van de onderneming. Met een vaste definitie en eenheid kunnen we hun ontwikkeling over meerdere maanden volgen.',examples:[
-        '<strong>Klanten</strong><span>Nieuwe klanten, klantbehoud of omzet per klant.</span>',
-        '<strong>Verkoop</strong><span>Orderintake, sales pipeline of conversie.</span>',
-        '<strong>Bedrijfsvoering</strong><span>Bezettingsgraad, productiviteit of omzet per FTE.</span>'
+      {title:'KPI’s',heading:'De directie kiest de eigen KPI’s',text:'Welke drie tot vijf indicatoren zijn bepalend voor het succes van de onderneming? De keuze sluit aan op de eigen activiteiten en doelstellingen.',examples:[
+        '<strong>Relevant voor de onderneming</strong><span>De indicatoren maken de operationele en commerciële ontwikkeling zichtbaar.</span>',
+        '<strong>Duidelijk te vergelijken</strong><span>Iedere KPI krijgt een duidelijke naam, definitie en eenheid.</span>',
+        '<strong>Resultaat en ontwikkeling</strong><span>Vergelijk met het budget en, zodra beschikbaar, dezelfde periode vorig jaar. Volg daarnaast de trend over meerdere maanden.</span>'
       ]},
-      {title:'Kwalitatieve toelichting',heading:'Voorbeeldvragen',text:'We denken aan vragen over ontwikkelingen, kansen, risico’s en mogelijke ondersteuning. De definitieve vragen bepalen we nog per onderneming.',examples:[
-        '<strong>Welke marktontwikkelingen beïnvloeden het bedrijf?</strong><span>Wat merk je bij klanten, concurrenten of leveranciers?</span>',
-        '<strong>Welke kansen of risico’s vragen de komende maand aandacht?</strong>',
-        '<strong>Waar kan Amerborgh bij helpen?</strong><span>Noem eventuele ondersteuning of een besluit dat nodig is.</span>'
+      {title:'Kwalitatieve toelichting',heading:'Drie voorlopige vragen',text:'De toelichting geeft context bij de cijfers en helpt de bespreking voor te bereiden. Er blijft ruimte voor andere onderwerpen die voor de onderneming van belang zijn.',examples:[
+        '<strong>Geef een korte toelichting op de resultaten ten opzichte van budget en vorig jaar.</strong>',
+        '<strong>Welke ontwikkelingen in- of extern (positief of negatief) hebben er invloed op de resultaten?</strong>',
+        '<strong>Wat zijn de prioriteiten, en hoe kan Amerborgh jullie hierbij ondersteunen?</strong>'
       ]}
     ];
     const p=items[state.pillar];
@@ -54,16 +63,20 @@
     const el=event.target.closest('button[data-action]');if(!el)return;
     const action=el.dataset.action;
     if(action==='pillar'){state.pillar=+el.dataset.value;renderPillars();}
+    if(action==='expand'){const viewport=el.closest('.portal-viewport');setExpanded(viewport,viewport.dataset.expanded!=='true');}
 
   });
   window.addEventListener('message',event=>{
-    if(event.origin!==location.origin || event.data?.type!=='portal-dialog') return;
+    if(event.origin!==location.origin || !['portal-dialog','portal-preview-exit'].includes(event.data?.type)) return;
     const iframe=[...document.querySelectorAll('iframe.real-portal')].find(frame=>frame.contentWindow===event.source);
     if(!iframe)return;
     const viewport=iframe.parentElement;
+    if(event.data.type==='portal-preview-exit'){if(viewport.dataset.expanded==='true'&&viewport.dataset.dialogOpen!=='true')setExpanded(viewport,false);return;}
+    viewport.dataset.dialogOpen=String(Boolean(event.data.open));
     if(event.data.open && !viewport.matches(':popover-open')) viewport.showPopover();
-    if(!event.data.open && viewport.matches(':popover-open')) viewport.hidePopover();
+    if(!event.data.open && viewport.dataset.expanded!=='true' && viewport.matches(':popover-open')) viewport.hidePopover();
   });
+  document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;const viewport=document.querySelector('.portal-viewport[data-expanded="true"]');if(viewport&&viewport.dataset.dialogOpen!=='true'){event.preventDefault();event.stopPropagation();setExpanded(viewport,false);}},true);
   function init(){renderPillars();renderScreens();}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();

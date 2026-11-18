@@ -1,13 +1,13 @@
-import {companies, rows, financialFields, hotelKpiFields, qualitativeFields} from './dashboard-fixtures.js';
+import {companies, rows, financialFields, companyKpiFields, qualitativeFields} from './dashboard-fixtures.js';
 
 // Public presentation data only. Labels and shapes mirror the portal source;
 // company, figures, answers and dates below are entirely fictional.
 export const demoCompany = companies[0];
 export const financialSchema = financialFields.filter(field => field.id !== 'ebitda');
 
-// These are the portal's existing seeded qualitative example questions.
+// The three provisional questions agreed in the information document.
 export const qualitativeSchema = qualitativeFields;
-export const kpiSchema = hotelKpiFields;
+export const kpiSchema = companyKpiFields;
 export const demoActual = rows[0].selected.actual;
 export const demoQualitativeAnswers = Object.fromEntries(rows[0].selected.qualitative.map(field => [field.id, field.value]));
 export const demoKpiAnswers = Object.fromEntries(rows[0].selected.kpis.map(field => [field.id, field.value]));
@@ -28,10 +28,23 @@ export function makeDemoForm(kind = 'financial', {empty = false, submitted = fal
   });
 }
 
+export const budgetPath = (year = 2027, companyIndex = 0) => `companies/${companies[companyIndex].id}/budget/${year}/`;
+export const budgetSchema = financialSchema.filter(field => field.group === 'pnl');
+export function makeDemoBudget(year = 2027, companyIndex = 0) {
+  const row = rows[companyIndex];
+  return structuredClone({
+    company: row.company, year, years: [2026, 2027], schema: budgetSchema,
+    data: Object.fromEntries(Array.from({length:12},(_,index)=>[index+1,
+      Object.fromEntries(budgetSchema.map(field=>[field.id,row.series[index % row.series.length].budget[field.id]]))])),
+    revision: 1, status: 'draft', reason: '', has_published: false,
+    can_edit: true, is_demo: true, updated_at: '2026-11-18T08:30:00Z', history: [],
+  });
+}
+
 // The real import parser reads this ordinary worksheet, not a mocked result.
 export const importWorkbook = {
-  filename: 'Hotel A - augustus 2026 - voorbeeld.xlsx',
-  sheets: [{name: 'Hotel A', rows: [
+  filename: 'Bedrijf A - augustus 2026 - voorbeeld.xlsx',
+  sheets: [{name: 'Bedrijf A', rows: [
     ['Post', 'Augustus 2026'],
     ...financialSchema.map(field => [field.label, Number(demoActual[field.id])]),
   ]}],

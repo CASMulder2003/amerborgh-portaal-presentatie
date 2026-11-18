@@ -27,7 +27,9 @@ Open daarna `http://127.0.0.1:8768/`. Pijltjestoetsen bladeren door de dia’s. 
 9. Wie levert wat aan?
 10. Gebruikers en toegang
 
-De portaalvoorbeelden gebruiken de oorspronkelijke React-onderdelen en CSS van het portaal. De presentatie toont schermfragmenten, geen volledig portaal. **Hotel A, Hotel B, Hotel C en alle cijfers en antwoorden zijn fictief.** Er is geen verbinding met productie of AI. Formulierwijzigingen bestaan alleen in het geheugen van de geopende demo. Het importvoorbeeld gebruikt een ingebouwd werkblad met de echte herkenningscode.
+De portaalvoorbeelden gebruiken de oorspronkelijke React-onderdelen en CSS van het portaal. Vanuit de bedrijfstabel opent het volledige bedrijfsoverzicht, met een terugknop. **Bedrijf A, Bedrijf B, Bedrijf C en alle cijfers en antwoorden zijn fictief.** Er is geen verbinding met productie of AI. Formulierwijzigingen bestaan alleen in het geheugen van de geopende demo. Het importvoorbeeld gebruikt een ingebouwd werkblad met de echte herkenningscode. Via Alle formulieren zijn de drie onderdelen en het financiële jaarbudget bereikbaar.
+
+Ieder portaalvoorbeeld kan worden vergroot en weer teruggezet. KPI 1, 2 en 3 zijn neutrale weergaven, geen voorgestelde indicatoren. De directie kiest de eigen KPI’s. De budgetlijn bij KPI’s is een presentatievoorbeeld van de gewenste uitbreiding; dit implementeert nog geen KPI-budgetopslag in het echte portaal. De drie voorlopige kwalitatieve vragen volgen het met Loes afgestemde document.
 
 ## Bewerken en bouwen
 
@@ -44,7 +46,7 @@ PORTAL_SOURCE=/pad/naar/amerborgh-portaal/frontend node presentation-src/build.m
 quarto render index.qmd
 ```
 
-Het bouwscript leest de oorspronkelijke onderdelen rechtstreeks. Alleen tijdens de presentatiebuild maakt het interne onderdelen exporteerbaar en vervangt het de API door de lokale demo-adapter. Het portaal zelf wordt niet gewijzigd. De afgewerkte bestanden worden meegeleverd, dus GitHub Pages heeft geen aparte bouwstap nodig.
+Het bouwscript leest de oorspronkelijke onderdelen rechtstreeks. Alleen tijdens de presentatiebuild maakt het interne onderdelen exporteerbaar, vervangt het de API door de lokale demo-adapter en voegt het de KPI-budgetvergelijking toe via een gecontroleerde bronaanpassing. Het portaal zelf wordt niet gewijzigd door deze build. De afgewerkte bestanden worden meegeleverd, dus GitHub Pages heeft geen aparte bouwstap nodig.
 
 ## GitHub Pages
 
