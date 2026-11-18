@@ -13,7 +13,7 @@
         '<strong>Verkoop</strong><span>Orderintake, sales pipeline of conversie.</span>',
         '<strong>Bedrijfsvoering</strong><span>Bezettingsgraad, productiviteit of omzet per FTE.</span>'
       ]},
-      {title:'Kwalitatieve toelichting',heading:'Ontwikkelingen en ondersteuning',text:'De onderneming beschrijft belangrijke veranderingen en de ondersteuning die zij nodig heeft. De vragen stemmen we per bedrijf af.',examples:[
+      {title:'Kwalitatieve toelichting',heading:'Ontwikkelingen en ondersteuning',text:'De onderneming beschrijft belangrijke veranderingen en de ondersteuning die zij nodig heeft. Dit zijn voorbeeldvragen. De definitieve vragen bespreken we nog per onderneming.',examples:[
         '<strong>Welke marktontwikkelingen beïnvloeden het bedrijf?</strong><span>Wat merk je bij klanten, concurrenten of leveranciers?</span>',
         '<strong>Welke kansen of risico’s vragen de komende maand aandacht?</strong>',
         '<strong>Waar kan Amerborgh bij helpen?</strong><span>Noem eventuele ondersteuning of een besluit dat nodig is.</span>'

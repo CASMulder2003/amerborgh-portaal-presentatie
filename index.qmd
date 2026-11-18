@@ -90,7 +90,7 @@ Dit zijn de originele KPI-grafieken. Andere ondernemingen krijgen de indicatoren
 
 ## Kwalitatieve toelichting {#toelichting}
 
-<p class="lead">De onderneming beschrijft wat er speelt, welke kansen en risico’s zij ziet en waar Amerborgh kan helpen.</p>
+<p class="lead">Voorbeeldvragen voor de toelichting. De definitieve vragen bespreken we nog per onderneming.</p>
 <div id="qualitative" class="interactive"></div>
 
 ::: {.notes}
