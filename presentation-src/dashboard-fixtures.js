@@ -25,6 +25,7 @@ export const qualitativeFields = [
   { id: 'results', label: 'Geef een korte toelichting op de resultaten ten opzichte van budget en vorig jaar.', type: 'text', unit: '', help: '', required: true },
   { id: 'developments', label: 'Welke ontwikkelingen in- of extern (positief of negatief) hebben er invloed op de resultaten?', type: 'text', unit: '', help: '', required: true },
   { id: 'priorities', label: 'Wat zijn de prioriteiten, en hoe kan Amerborgh jullie hierbij ondersteunen?', type: 'text', unit: '', help: '', required: true },
+  { id: 'other', label: 'Zijn er andere onderwerpen die jullie graag willen toelichten of bespreken?', type: 'text', unit: '', help: '', required: false },
 ];
 export const companies = ['Bedrijf A', 'Bedrijf B', 'Bedrijf C'].map((name, index) => ({
   id: 901 + index, name, category: 'operating', parent_id: null, has_children: false,
@@ -61,26 +62,6 @@ function companyMonth(index, m, variant = 'actual') {
   };
   return { figures, kpis: companyKpiFields.map(field => ({ ...field, value: values[field.id] })) };
 }
-const euro = value => new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Number(value));
-const monthNames=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
-function exampleAnswers(index, m, current, previous, budget) {
-  const a=current.figures, p=previous.figures, b=budget.figures;
-  const timing=euro(Number(b.revenue)-Number(a.revenue));
-  const explanations=[
-    `Twee opdrachtgevers hebben de oplevering van hun projecten doorgeschoven. Volgens onze projectadministratie verklaart dit ${timing} van de omzet die in het budget voor deze maand stond. De opdrachten zijn nog bevestigd, maar we rekenen de omzet pas mee zodra de werkzaamheden zijn afgerond. Bij bestaande klanten zien we meer vervolgopdrachten dan vorig jaar. Intern is één vacature nog niet ingevuld; tijdelijk vangen we dit op met de huidige bezetting. Vooralsnog verwachten we geen effect op de leverafspraken, maar bij extra opdrachten kan de capaciteit krap worden.`,
-    `De start van een nieuwe opdracht is op verzoek van de klant uitgesteld; daardoor is ${timing} omzet nog niet gerealiseerd. De getekende opdracht blijft staan. Tegelijk vragen bestaande klanten om kortere doorlooptijden. We hebben daarom de werkplanning aangepast en zetten de beschikbare capaciteit eerst op opdrachten met een bevestigde leverdatum. Het klantbehoud ligt onder onze doelstelling. Uit de geregistreerde opzeggesprekken blijkt dat enkele klanten hun uitgaven terugbrengen; we onderzoeken of andere dienstverlening beter bij hun behoefte past. Dat gesprek heeft nog niet tot nieuwe afspraken geleid.`,
-    `De bestaande klanten hebben minder aanvullende opdrachten geplaatst dan begroot. Het verschil in omzet bedraagt ${timing}. De basiscontracten lopen door, maar extra opdrachten zijn niet gegarandeerd en tellen we niet alvast mee in de jaarverwachting. Positief is dat meer klanten hun contract verlengen dan eerder in het jaar. Intern hebben we de overdracht tussen verkoop en uitvoering vereenvoudigd. We meten de komende maanden of dit daadwerkelijk tot kortere doorlooptijden leidt; dat effect is nog niet verwerkt in onze verwachtingen.`,
-  ];
-  const priorities=[
-    'Onze eerste prioriteit is de uitgestelde projecten met de klanten opnieuw in te plannen. De projectleiders bevestigen de data in de eerste week van de volgende maand. Daarnaast bespreken we wekelijks de beschikbare capaciteit en versnellen we de werving voor de openstaande vacature. We vragen Amerborgh om mee te denken over geschikte kandidaten binnen het netwerk. Een besluit over extra capaciteit nemen we pas als de nieuwe planning vaststaat. Bij de volgende rapportage lichten we toe welk deel van de uitgestelde omzet is gerealiseerd en wat dit betekent voor de jaarverwachting.',
-    'We richten ons de komende maand op het vasthouden van bestaande klanten en het starten van de uitgestelde opdracht. De commercieel verantwoordelijke voert de vervolgafspraken met klanten; de operationeel verantwoordelijke bewaakt de planning. We vragen Amerborgh om een contactpersoon met ervaring in contractverlenging en klantbehoud, zodat we onze aanpak kunnen toetsen. Extra commerciële uitgaven stellen we voorlopig uit. In de volgende rapportage laten we zien welke contracten zijn verlengd en of de nieuwe opdracht daadwerkelijk is gestart. Daarmee kunnen we de verwachting voor de rest van het jaar aanscherpen.',
-    'We willen de orderintake verbeteren zonder de marge onder druk te zetten. Het commerciële team benadert klanten met een concrete aanvullende behoefte en legt de afspraken vast in de verkoopplanning. Daarnaast volgen we de nieuwe werkwijze tussen verkoop en uitvoering. We vragen Amerborgh om mee te kijken naar de commerciële prioriteiten en waar passend introducties binnen het netwerk te helpen maken. Bij de volgende bespreking beoordelen we de bevestigde opdrachten en de beschikbare capaciteit. Pas dan bepalen we of extra inzet nodig is; we vragen nu nog geen aanvullend investeringsbudget.',
-  ];
-  return [
-    `In ${monthNames[m-1]} bedraagt de omzet ${euro(a.revenue)}, tegenover ${euro(b.revenue)} budget en ${euro(p.revenue)} in dezelfde maand vorig jaar. De omzet ligt dus onder budget, maar boven vorig jaar. De EBITDA is ${euro(a.ebitda)} bij een budget van ${euro(b.ebitda)}; het nettoresultaat bedraagt ${euro(a.net_result)}. De personeelskosten bewegen mee met de omzet, terwijl de huur gelijk blijft. De lagere omzet wordt daardoor slechts gedeeltelijk opgevangen door lagere kosten. We houden de uitgestelde of ontbrekende omzet apart in onze planning en beschouwen die nog niet als ingehaald.`,
-    explanations[index], priorities[index],
-  ];
-}
 const cumulative = (series, kind) => Object.fromEntries(financialFields.map(field => [field.id,
   field.group === 'balance' ? series[month - 1][kind][field.id]
     : money(series.reduce((total, point) => total + Number(point[kind][field.id]), 0)),
@@ -91,11 +72,10 @@ export const rows = companies.map((company, index) => {
     const m = n + 1;
     const current = companyMonth(index, m), previous = companyMonth(index, m, 'previous'), budget = companyMonth(index, m, 'budget');
     const previousMonth = m === 1 ? null : companyMonth(index, m - 1);
-    const answers=exampleAnswers(index,m,current,previous,budget);
     return { month: m, period: periods[n], actual: current.figures, previous: previous.figures,
       budget: budget.figures, kpis: current.kpis, previous_kpis: [], budget_kpis: budget.kpis,
       previous_month_kpis: previousMonth?.kpis || [], correction_pending: false, forms,
-      qualitative: qualitativeFields.map((field, i) => ({ ...field, value: answers[i] })),
+      qualitative: qualitativeFields.map(field => ({ ...field, value: '…' })),
     };
   });
   return { company, series, selected: series[month - 1],

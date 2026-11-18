@@ -22,10 +22,11 @@
         '<strong>Duidelijk te vergelijken</strong><span>Iedere KPI krijgt een duidelijke naam, definitie en eenheid.</span>',
         '<strong>Resultaat en ontwikkeling</strong><span>Vergelijk met het budget en, zodra beschikbaar, dezelfde periode vorig jaar. Volg daarnaast de trend over meerdere maanden.</span>'
       ]},
-      {title:'Kwalitatieve toelichting',heading:'Drie voorlopige vragen',text:'De toelichting geeft context bij de cijfers en helpt de bespreking voor te bereiden. Er blijft ruimte voor andere onderwerpen die voor de onderneming van belang zijn.',examples:[
+      {title:'Kwalitatieve toelichting',heading:'Vier voorlopige vragen',text:'De toelichting geeft context bij de cijfers en helpt de bespreking voor te bereiden. De vierde vraag biedt ruimte voor eigen onderwerpen.',examples:[
         '<strong>Geef een korte toelichting op de resultaten ten opzichte van budget en vorig jaar.</strong>',
         '<strong>Welke ontwikkelingen in- of extern (positief of negatief) hebben er invloed op de resultaten?</strong>',
-        '<strong>Wat zijn de prioriteiten, en hoe kan Amerborgh jullie hierbij ondersteunen?</strong>'
+        '<strong>Wat zijn de prioriteiten, en hoe kan Amerborgh jullie hierbij ondersteunen?</strong>',
+        '<strong>Zijn er andere onderwerpen die jullie graag willen toelichten of bespreken?</strong>'
       ]}
     ];
     const p=items[state.pillar];

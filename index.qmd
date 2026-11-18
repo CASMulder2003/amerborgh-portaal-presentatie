@@ -90,11 +90,11 @@ De neutrale namen KPI 1, KPI 2 en KPI 3 laten alleen de weergave zien; het zijn 
 
 ## Kwalitatieve toelichting {#toelichting}
 
-<p class="lead">Drie voorlopige vragen geven context bij de resultaten, ontwikkelingen en prioriteiten van de onderneming.</p>
+<p class="lead">Vragen over resultaten, ontwikkelingen en prioriteiten, met ruimte voor andere onderwerpen die de onderneming wil bespreken.</p>
 <div id="qualitative" class="interactive"></div>
 
 ::: {.notes}
-De drie voorlopige vragen volgen het met Loes afgestemde document. De antwoorden zijn fictieve voorbeelden van het gewenste detailniveau. Er blijft ruimte voor andere onderwerpen die de onderneming wil bespreken. De ingediende toelichting is zichtbaar voor de onderneming en Amerborgh. Dit scherm toont de eigen antwoorden, geen automatisch gegenereerde AI-analyse.
+De eerste drie voorlopige vragen volgen het met Loes afgestemde document. De vierde, optionele vraag biedt ruimte voor eigen onderwerpen. De antwoorden zijn bewust vervangen door een weglatingsteken, zodat de presentatie geen inhoud of antwoordstijl voorschrijft. De ingediende toelichting is zichtbaar voor de onderneming en Amerborgh. Dit scherm toont de eigen antwoorden, geen automatisch gegenereerde AI-analyse.
 :::
 
 ## Wat ziet Amerborgh? {#amerborgh}
@@ -124,7 +124,7 @@ Het invulformulier bevat ook de knop voor bestandsimport. Deze opent in de prese
   <div class="responsibility-head"><span></span><h3>Via LucaNet</h3><h3>Overige ondernemingen</h3></div>
   <div><strong>Financiële informatie</strong><p>Amerborgh laadt de cijfers centraal in. De onderneming hoeft deze niet zelf aan te leveren.</p><p>De onderneming kan de cijfers invullen of een bestand uit de eigen administratie gebruiken.</p></div>
   <div class="responsibility-shared"><strong>KPI’s</strong><p>De onderneming kiest de relevante indicatoren en levert de bijbehorende waarden aan.</p></div>
-  <div class="responsibility-shared"><strong>Kwalitatieve toelichting</strong><p>De onderneming kan de resultaten en ontwikkelingen toelichten aan de hand van de drie vragen.</p></div>
+  <div class="responsibility-shared"><strong>Kwalitatieve toelichting</strong><p>De onderneming kan de resultaten en ontwikkelingen toelichten aan de hand van de vragen.</p></div>
 </div>
 <p class="practical-note">Met de overige ondernemingen stemmen we de bestandsindeling af op hun eigen administratie. Voor vastgoed vragen we alleen financiële informatie.</p>
 ```
