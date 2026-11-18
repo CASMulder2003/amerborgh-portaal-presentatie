@@ -1,6 +1,8 @@
 /* Only the presentation viewport. Portal component rules remain unchanged. */
 body { padding: 20px; }
 .reporting-workspace.presentation-figures { padding:0; }
+.presentation-kpi-summary { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.presentation-kpi-summary .kpi-value-changes { grid-column:1 / -1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
 .presentation-heading { margin-bottom: 20px; }
 .presentation-heading h1 { margin: 0; font-size: 30px; }
 .presentation-heading p { margin: 4px 0 0; color: var(--color-muted); font-size: 13px; }

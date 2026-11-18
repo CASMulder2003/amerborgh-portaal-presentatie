@@ -57,8 +57,8 @@ function companyMonth(index, m, variant = 'actual') {
   }).map(([key, value]) => [key, money(value)]));
   const values = {
     kpi_1: money(revenue * (variant === 'budget' ? 1.08 : 1.05) / 1000),
-    kpi_2: money(90 + m * .3 + [0,-1,1][index] + (variant === 'budget' ? 4 : 0)),
-    kpi_3: String([85,62,48][index] + m * 3 + (variant === 'budget' ? 5 : 0)),
+    kpi_2: money(90 + m * .3 + [0,-1,1][index] + (variant === 'budget' ? 4 : variant === 'previous' ? -2.2 : 0)),
+    kpi_3: String([85,62,48][index] + m * 3 + (variant === 'budget' ? 5 : variant === 'previous' ? -6 : 0)),
   };
   return { figures, kpis: companyKpiFields.map(field => ({ ...field, value: values[field.id] })) };
 }
@@ -73,7 +73,7 @@ export const rows = companies.map((company, index) => {
     const current = companyMonth(index, m), previous = companyMonth(index, m, 'previous'), budget = companyMonth(index, m, 'budget');
     const previousMonth = m === 1 ? null : companyMonth(index, m - 1);
     return { month: m, period: periods[n], actual: current.figures, previous: previous.figures,
-      budget: budget.figures, kpis: current.kpis, previous_kpis: [], budget_kpis: budget.kpis,
+      budget: budget.figures, kpis: current.kpis, previous_kpis: previous.kpis, budget_kpis: budget.kpis,
       previous_month_kpis: previousMonth?.kpis || [], correction_pending: false, forms,
       qualitative: qualitativeFields.map(field => ({ ...field, value: '…' })),
     };

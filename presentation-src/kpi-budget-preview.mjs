@@ -5,11 +5,31 @@ export function withKpiBudgetPreview(source) {
     if (source.split(before).length !== 2) throw new Error(`KPI budget preview: expected one source match for ${before}`);
     source=source.replace(before,after);
   };
-  replaceOnce('periodIndex, periodLabel }', 'periodIndex, periodLabel, sameKpi }');
-  replaceOnce('<MonthlyKpiFigure field={field} previousMonth={previousMonth}', '<MonthlyKpiFigure field={field} budget={presentationKpiBudgetField(row, field, year, month)} previousMonth={previousMonth}');
+  replaceOnce('periodIndex, periodLabel }', 'periodIndex, periodLabel, sameKpi, kpiDifference }');
+  replaceOnce('<MonthlyKpiFigure field={field} previousMonth={previousMonth}', '<MonthlyKpiFigure field={field} budget={presentationKpiBudgetField(row, field, year, month)}');
   replaceOnce('points={points} valueRange={scoreRange(field)}', 'points={presentationKpiBudgetPoints(row, field, points)} valueRange={scoreRange(field)}');
+  replaceOnce(`summary={<div className="kpi-chart-summary">
+      <div className="kpi-current-value"><span>{periodLabel(selected)}</span><strong>{kpiValue(field)}</strong></div>
+      {(lastMonth !== '—' || lastYear !== '—') && <dl className="kpi-value-changes">
+        {lastMonth !== '—' && <div><dt>T.o.v. {periodLabel(indexPeriod(periodIndex(selected)-1)).toLowerCase()}</dt><dd>{lastMonth}</dd></div>}
+        {lastYear !== '—' && <div><dt>T.o.v. {periodLabel(periodId(year-1, month)).toLowerCase()}</dt><dd>{lastYear}</dd></div>}
+      </dl>}
+    </div>}`, 'summary={<PresentationKpiSummary field={field} budget={presentationKpiBudgetField(row, field, year, month)} previousYear={previousYear} year={year} month={month} />}');
   replaceOnce("series={[{ key: 'actual', label: String(year) }, { key: 'previous', label: String(year-1) }]}", 'series={presentationKpiBudgetSeries(row, field, points, year)}');
   return source + `
+function PresentationKpiSummary({ field, budget, previousYear, year, month }) {
+  const budgetValue = budget ? kpiValue(budget) : '—';
+  const budgetDifference = kpiDifference(field, budget);
+  const yearDifference = kpiDifference(field, previousYear);
+  return <div className="kpi-chart-summary presentation-kpi-summary">
+    <div className="kpi-current-value"><span>{periodLabel(periodId(year, month))}</span><strong>{kpiValue(field)}</strong></div>
+    {budgetValue !== '—' && <div className="kpi-current-value"><span>Budget {periodLabel(periodId(year, month)).toLowerCase()}</span><strong>{budgetValue}</strong></div>}
+    {(budgetDifference !== '—' || yearDifference !== '—') && <dl className="kpi-value-changes">
+      {budgetDifference !== '—' && <div><dt>T.o.v. budget</dt><dd>{budgetDifference}</dd></div>}
+      {yearDifference !== '—' && <div><dt>T.o.v. {periodLabel(periodId(year-1, month)).toLowerCase()}</dt><dd>{yearDifference}</dd></div>}
+    </dl>}
+  </div>;
+}
 function presentationKpiBudgetField(row, field, year, month) {
   return row.series.find(point => point.period === periodId(year, month))?.budget_kpis?.find(item => sameKpi(item, field));
 }
@@ -38,7 +58,7 @@ export function withMonthlyKpiBudgetPreview(source) {
   );
   replaceOnce(
     "[{ key: 'lastMonth', field: previousMonth }, { key: 'lastYear', field: previousYear }]",
-    "[{ key: 'budget', field: budget }, { key: 'lastMonth', field: previousMonth }, { key: 'lastYear', field: previousYear }]",
+    "[{ key: 'budget', field: budget }, { key: 'lastYear', field: previousYear }]",
   );
   replaceOnce(
     "{reference.key === 'lastMonth' ? 'Vorige maand' : 'Dezelfde maand vorig jaar'} · {labels[reference.key].toLowerCase()}",
