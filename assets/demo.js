@@ -17,16 +17,15 @@
   function renderPillars() {
     const items=[
       {title:'Financiële cijfers'},
-      {title:'KPI’s',heading:'De directie kiest de eigen KPI’s',text:'Welke drie tot vijf indicatoren zijn bepalend voor het succes van de onderneming? De keuze sluit aan op de eigen activiteiten en doelstellingen.',examples:[
-        '<strong>Relevant voor de onderneming</strong><span>De indicatoren maken de operationele en commerciële ontwikkeling zichtbaar.</span>',
-        '<strong>Duidelijk te vergelijken</strong><span>Iedere KPI krijgt een duidelijke naam, definitie en eenheid.</span>',
-        '<strong>Resultaat en ontwikkeling</strong><span>Vergelijk met het budget en, zodra beschikbaar, dezelfde periode vorig jaar. Volg daarnaast de trend over meerdere maanden.</span>'
+      {title:'KPI’s',heading:'KPI’s voor jullie onderneming',text:'We zien graag circa 3 tot 5 gerichte KPI’s die laten zien hoe jullie onderneming zich operationeel en commercieel ontwikkelt. Het gaat om de indicatoren die voor jullie succes het meest bepalend zijn.',examples:[
+        '<strong>Duidelijk te vergelijken</strong><span>Duidelijke, gerichte KPI’s helpen om trends makkelijk te volgen.</span>',
+        '<strong>Resultaat en ontwikkeling</strong><span>Ook deze trends willen we vergelijken met de budgetten en de cijfers van vorig jaar.</span>'
       ]},
-      {title:'Kwalitatieve toelichting',heading:'Vier voorlopige vragen',text:'De toelichting geeft context bij de cijfers en helpt de bespreking voor te bereiden. De vierde vraag biedt ruimte voor eigen onderwerpen.',examples:[
+      {title:'Kwalitatieve toelichting',heading:'Waarom deze vragen?',text:'We willen begrijpen waardoor de resultaten ontstaan en wat er speelt binnen jullie onderneming. Zo zien we ook waar Amerborgh kan ondersteunen.',examples:[
         '<strong>Geef een korte toelichting op de resultaten ten opzichte van budget en vorig jaar.</strong>',
         '<strong>Welke ontwikkelingen in- of extern (positief of negatief) hebben er invloed op de resultaten?</strong>',
         '<strong>Wat zijn de prioriteiten, en hoe kan Amerborgh jullie hierbij ondersteunen?</strong>',
-        '<strong>Zijn er andere onderwerpen die jullie graag willen toelichten of bespreken?</strong>'
+        '<strong>Wat willen jullie verder nog toelichten?</strong>'
       ]}
     ];
     const p=items[state.pillar];
@@ -46,8 +45,8 @@
         </div>
       </div>
       <div class="financial-context">
-        <div><h4>Vergelijkingen</h4><p>Realisatie tegenover dezelfde periode vorig jaar en, waar beschikbaar, het budget.</p></div>
-        <div><h4>Jaarbudget</h4><p>De begrote financiële cijfers voor het komende jaar, verdeeld over de maanden.</p></div>
+        <div><h4>Vergelijkingen</h4><p>We volgen de trends in de cijfers en vergelijken deze met het budget en de resultaten van vorig jaar.</p></div>
+        <div><h4>Jaarbudget</h4><p>Graag ontvangen we ook de jaarbudgetten voor het komende jaar.</p></div>
       </div>
     </div>`;
     mount('pillars',`<div class="pillars">${items.map((p,i)=>button(`<strong>${p.title}</strong>`,'pillar',i,i===state.pillar,'pillar')).join('')}</div>${state.pillar===0?financial:`<div class="pillar-detail" aria-live="polite"><div><h3>${p.heading}</h3><p>${p.text}</p></div><ul>${p.examples.map(e=>`<li>${e}</li>`).join('')}</ul></div>`}`);

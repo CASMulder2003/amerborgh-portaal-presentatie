@@ -269,7 +269,7 @@ body { background:var(--page); }
 .financial-section ul { list-style:none; padding:0; margin:0; }
 .financial-section li { font-size:var(--text-size); line-height:1.4; margin:0 0 12px; }
 .financial-section .financial-subitems { list-style:none; margin:8px 0 0; padding-left:20px; }
-.financial-section .financial-subitems li { margin:0 0 8px; }
+.financial-section .financial-subitems li { margin:0 0 8px; font-size:21px; color:#89847f; }
 .balance-section { border-left:1px solid var(--line); padding-left:36px; }
 .financial-context { display:grid; grid-template-columns:1fr 1fr; gap:60px; border-top:1px solid var(--line); margin-top:24px; padding-top:22px; }
 .interactive .financial-context h4 { font:600 var(--text-size)/1.35 var(--body); margin:0 0 10px; }

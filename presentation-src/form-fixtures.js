@@ -5,7 +5,7 @@ import {companies, rows, financialFields, companyKpiFields, qualitativeFields} f
 export const demoCompany = companies[0];
 export const financialSchema = financialFields.filter(field => field.id !== 'ebitda');
 
-// The three provisional questions agreed in the information document.
+// The provisional questions shared by the presentation and forms.
 export const qualitativeSchema = qualitativeFields;
 export const kpiSchema = companyKpiFields;
 export const demoActual = rows[0].selected.actual;

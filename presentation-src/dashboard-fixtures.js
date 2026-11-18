@@ -25,7 +25,7 @@ export const qualitativeFields = [
   { id: 'results', label: 'Geef een korte toelichting op de resultaten ten opzichte van budget en vorig jaar.', type: 'text', unit: '', help: '', required: true },
   { id: 'developments', label: 'Welke ontwikkelingen in- of extern (positief of negatief) hebben er invloed op de resultaten?', type: 'text', unit: '', help: '', required: true },
   { id: 'priorities', label: 'Wat zijn de prioriteiten, en hoe kan Amerborgh jullie hierbij ondersteunen?', type: 'text', unit: '', help: '', required: true },
-  { id: 'other', label: 'Zijn er andere onderwerpen die jullie graag willen toelichten of bespreken?', type: 'text', unit: '', help: '', required: false },
+  { id: 'other', label: 'Wat willen jullie verder nog toelichten?', type: 'text', unit: '', help: '', required: false },
 ];
 export const companies = ['Bedrijf A', 'Bedrijf B', 'Bedrijf C'].map((name, index) => ({
   id: 901 + index, name, category: 'operating', parent_id: null, has_children: false,

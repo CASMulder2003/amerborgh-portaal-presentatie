@@ -62,7 +62,7 @@ Begin met het doel van de rapportage en bespreek daarna welke informatie daarvoo
 
 ## De drie onderdelen {#drie-onderdelen}
 
-<p class="lead">Een compacte financiële basis, eigen KPI’s en een kwalitatieve toelichting.</p>
+<p class="lead">Financiële cijfers, KPI’s en kwalitatieve toelichtingen.</p>
 <div id="pillars" class="interactive"></div>
 
 ::: {.notes}
