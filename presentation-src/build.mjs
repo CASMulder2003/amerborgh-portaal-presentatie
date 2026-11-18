@@ -10,7 +10,7 @@ const source = path.join(portal, 'src');
 const { build } = await import(pathToFileURL(path.join(portal, 'node_modules/vite/dist/node/index.js')));
 const { default: react } = await import(pathToFileURL(path.join(portal, 'node_modules/@vitejs/plugin-react/dist/index.js')));
 const exportsFor = {
-  'pages/reporting/overview/Dashboard.jsx': ['CompanyResults', 'CompanyDashboard'],
+  'pages/reporting/overview/Dashboard.jsx': ['CompanyResults'],
   'pages/reporting/forms/FormEditor.jsx': ['FormEditor'],
   'pages/reporting/imports/FileImport.jsx': ['FileReview'],
   'pages/reporting/reports/ReportReader.jsx': ['PublicationContent'],

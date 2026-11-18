@@ -30,7 +30,7 @@ format:
 ## Het rapportageportaal {#start .cover}
 
 ```{=html}
-<div class="cover-top"><img src="assets/amerborgh-logo.svg" alt="Amerborgh" class="brand"><span>Toelichting voor directie en ondernemingen</span></div>
+<div class="cover-top"><img src="assets/amerborgh-logo.svg" alt="Amerborgh" class="brand"></div>
 <div class="cover-title">Het rapportageportaal</div>
 <p class="cover-intro">Financiële informatie, KPI’s<br>en kwalitatieve toelichtingen</p>
 <div class="cover-rule"></div>
@@ -99,11 +99,11 @@ De getoonde vragen zijn voorbeelden. De definitieve vragen worden nog per ondern
 
 ## Wat ziet Amerborgh? {#amerborgh}
 
-<p class="lead">Vergelijk actieve bedrijven op omzet, EBITDA en nettoresultaat. Open een bedrijf voor de details.</p>
+<p class="lead">Vergelijk bedrijven op omzet, nettoresultaat en EBITDA, naast budget en vorig jaar. Klik op een bedrijf voor het volledige overzicht.</p>
 <div id="central-overview" class="interactive"></div>
 
 ::: {.notes}
-Dit is de echte tabel Resultaten per bedrijf. De kolommen kunnen worden gesorteerd en een bedrijf kan worden geopend. Het portaal biedt daarnaast het gezamenlijke overzicht en rapportages per bedrijfstak. De totalen volgen de actieve selectie en de ingestelde eigendomspercentages. Dit is een managementoverzicht, geen geconsolideerde jaarrekening. Als een budget ontbreekt, wordt geen budgetvergelijking getoond.
+Dit is de echte tabel Resultaten per bedrijf. De kolommen kunnen worden gesorteerd. Klik op een bedrijf voor de volledige overzichtspagina, met bedragen, grafieken, KPI’s, toelichtingen en aanleverstatus. De terugknop brengt je weer naar de tabel. Het portaal biedt daarnaast het gezamenlijke overzicht en rapportages per bedrijfstak. De totalen volgen de actieve selectie en de ingestelde eigendomspercentages. Dit is een managementoverzicht, geen geconsolideerde jaarrekening. Als een budget ontbreekt, wordt geen budgetvergelijking getoond.
 :::
 
 ## Informatie aanleveren {#aanleveren}

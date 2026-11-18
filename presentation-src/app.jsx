@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { CompanyResults } from '@portal/pages/reporting/overview/Dashboard.jsx';
+import Dashboard, { CompanyResults } from '@portal/pages/reporting/overview/Dashboard.jsx';
 import TrendChart from '@portal/pages/reporting/charts/TrendChart.jsx';
 import { KpiCompanyFigures } from '@portal/pages/reporting/overview/KpiOverview.jsx';
 import { FormEditor } from '@portal/pages/reporting/forms/FormEditor.jsx';
 import { PublicationContent } from '@portal/pages/reporting/reports/ReportReader.jsx';
 import { data, context, selection, rows, year, month } from './dashboard-fixtures.js';
 import { makeDemoForm, formPath, financialSchema, demoActual } from './form-fixtures.js';
-import { registerDemoForm } from './local-api.js';
+import { registerDemoForm, getDemoForm } from './local-api.js';
 import '@portal/styles/tokens.css';
 import '@portal/styles/global.css';
 import '@portal/styles/workspace.css';
@@ -21,6 +21,15 @@ import '@portal/pages/reporting/companies/EntityHierarchy.css';
 import './frame.css';
 
 const initialView = new URLSearchParams(location.search).get('view') || 'company';
+const centralDemo = ['central','central-table'].includes(initialView);
+// The central example can open every company's published tabs. Each iframe has
+// its own memory, so these records cannot change the separate input example.
+if (centralDemo) rows.forEach((_, companyIndex) => {
+  for (const kind of ['financial','kpi','qualitative']) {
+    const form=makeDemoForm(kind,{submitted:true,companyIndex});
+    registerDemoForm({...form,can_edit:false,can_reopen:false},formPath(kind,companyIndex));
+  }
+});
 function LocalForm({kind='financial', empty=false, revision=0, supplied}) {
   const initial = useMemo(() => registerDemoForm(supplied||makeDemoForm(kind, {empty})), [kind, empty, revision, supplied]);
   function exampleFile(event) {
@@ -61,28 +70,40 @@ function Demo() {
       if(event.data.view) {setView(event.data.view);setTab('samenvatting');setCompany(0);}
       window.scrollTo(0,0);
     };
+    const navigate = hash => {
+      const query=new URLSearchParams(hash.split('?')[1]||'');
+      if(query.has('company')) setCompany(Math.max(0,rows.findIndex(r=>r.company.id===Number(query.get('company')))));
+      if(query.has('kind')) {setKind(query.get('kind'));setView(centralDemo?'publication':'form');}
+      else if(query.has('company')) {setTab(query.get('view')||'samenvatting');setView('company');}
+      if(query.has('basis')) setBasis(query.get('basis'));
+      window.scrollTo(0,0);
+    };
     const links = event => {
       const anchor=event.target.closest('a');
       if(!anchor || !anchor.hash.includes('/')) return;
       event.preventDefault();
-      const query=new URLSearchParams(anchor.hash.split('?')[1]||'');
-      if(query.has('kind')) {setKind(query.get('kind'));setView('form');}
-      else if(query.has('view')) {setTab(query.get('view')); if(query.has('company')) {setCompany(Math.max(0,rows.findIndex(r=>r.company.id===Number(query.get('company')))));setView('company');}}
-      else if(query.has('company')) {setCompany(Math.max(0,rows.findIndex(r=>r.company.id===Number(query.get('company')))));setView('company');}
-      if(query.has('basis')) setBasis(query.get('basis'));
-      window.scrollTo(0,0);
+      history.replaceState(null,'',anchor.hash);
+      navigate(anchor.hash);
     };
+    const hashChanged=()=>{if(location.hash.includes('/'))navigate(location.hash);};
     window.addEventListener('message',receive);
+    window.addEventListener('hashchange',hashChanged);
     document.addEventListener('click',links);
-    return()=>{observer.disconnect();window.removeEventListener('message',receive);document.removeEventListener('click',links);};
+    return()=>{observer.disconnect();window.removeEventListener('message',receive);window.removeEventListener('hashchange',hashChanged);document.removeEventListener('click',links);};
   },[]);
   const oneSelection={year,month,company:rows[company].company.id};
+  const companyFromCentral=centralDemo && !['central','central-table'].includes(view);
   return <main className="reporting-workspace">
+    {companyFromCentral && <>
+      <a className="report-back" href="#central" onClick={event=>{event.preventDefault();history.replaceState(null,'','#central');setView(initialView);setBasis('ytd');setTab('samenvatting');window.scrollTo(0,0);}}>← Terug naar bedrijfstabel</a>
+      <header className="presentation-heading"><h1>{rows[company].company.name}</h1></header>
+    </>}
     {['central','central-table'].includes(view) && <header className="presentation-heading"><h1>Amerborgh</h1><p>Januari t/m augustus 2026</p></header>}
-    {view==='company'&&<div className="summary-charts company-summary-charts">{[['revenue','Omzet'],['net_result','Nettoresultaat'],['ebitda','EBITDA']].map(([field,title])=><TrendChart key={field} title={title} defaultStyle={field==='ebitda'?'bridge':'line'} bridgeValues={field==='ebitda'?rows[company].cumulative.actual:undefined} bridgePeriod="Januari t/m Augustus 2026" points={rows[company].series.map(point=>({label:point.period,actual:point.actual[field],previous:point.previous[field],budget:point.budget[field]}))} series={[{key:'actual',label:'2026'},{key:'previous',label:'2025'},{key:'budget',label:'Budget'}]}/>)}</div>}
+    {view==='company'&&(centralDemo?<Dashboard data={{...data,companies:[rows[company]]}} context={context} selection={oneSelection} view={tab} basis={basis} section="bedrijven" loading={false}/>:<div className="summary-charts company-summary-charts">{[['revenue','Omzet'],['net_result','Nettoresultaat'],['ebitda','EBITDA']].map(([field,title])=><TrendChart key={field} title={title} defaultStyle={field==='ebitda'?'bridge':'line'} bridgeValues={field==='ebitda'?rows[company].cumulative.actual:undefined} bridgePeriod="Januari t/m Augustus 2026" points={rows[company].series.map(point=>({label:point.period,actual:point.actual[field],previous:point.previous[field],budget:point.budget[field]}))} series={[{key:'actual',label:'2026'},{key:'previous',label:'2025'},{key:'budget',label:'Budget'}]}/>)}</div>)}
     {(view==='central'||view==='central-table')&&<CompanyResults data={data} context={context} selection={selection} basis={basis}/>}
     {view==='kpi'&&<KpiCompanyFigures row={rows[company]} year={year} month={month} basis="ytd"/>}
     {view==='qualitative'&&<PublicationContent form={makeDemoForm('qualitative',{submitted:true})} selection={oneSelection} kind="qualitative" central compact/>}
+    {view==='publication'&&<PublicationContent form={getDemoForm(formPath(kind,company))} selection={oneSelection} kind={kind} central compact/>}
     {view==='form'&&<LocalForm kind={kind} revision={revision}/>}
   </main>;
 }

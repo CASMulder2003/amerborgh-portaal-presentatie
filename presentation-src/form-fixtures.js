@@ -12,14 +12,15 @@ export const demoActual = rows[0].selected.actual;
 export const demoQualitativeAnswers = Object.fromEntries(rows[0].selected.qualitative.map(field => [field.id, field.value]));
 export const demoKpiAnswers = Object.fromEntries(rows[0].selected.kpis.map(field => [field.id, field.value]));
 export const demoTarget = {kind: 'financial', year: 2026, month: 8};
-export const formPath = (kind = 'financial') => `companies/${demoCompany.id}/forms/2026/8/${kind}/`;
+export const formPath = (kind = 'financial', companyIndex = 0) => `companies/${companies[companyIndex].id}/forms/2026/8/${kind}/`;
 
-export function makeDemoForm(kind = 'financial', {empty = false, submitted = false} = {}) {
+export function makeDemoForm(kind = 'financial', {empty = false, submitted = false, companyIndex = 0} = {}) {
   const schema = kind === 'financial' ? financialSchema : kind === 'kpi' ? kpiSchema : qualitativeSchema;
-  const contents = kind === 'financial' ? {actual: {...demoActual}, budget: {}} : {answers: {...(kind === 'kpi' ? demoKpiAnswers : demoQualitativeAnswers)}};
+  const row = rows[companyIndex];
+  const contents = kind === 'financial' ? {actual: {...row.selected.actual}, budget: {}} : {answers: Object.fromEntries((kind === 'kpi' ? row.selected.kpis : row.selected.qualitative).map(field => [field.id, field.value]))};
   if (empty) for (const key of Object.keys(contents)) contents[key] = {};
   return structuredClone({
-    company: demoCompany, year: 2026, month: 8, kind, schema,
+    company: row.company, year: 2026, month: 8, kind, schema,
     definition_stamp: kind === 'financial' ? 'financial-v4' : `presentation-${kind}-1`,
     data: contents, can_edit: !submitted, can_reopen: submitted,
     progress: {status: submitted ? 'submitted' : empty ? 'not_started' : 'draft', revision: 1, updated_at: empty ? null : '2026-09-04T08:30:00Z'},
