@@ -27,7 +27,7 @@
           <h3>Winst-en-verliesrekening</h3><p class="section-caption">Opbrengsten, kosten en resultaat over de gekozen periode.</p>
           <div class="pnl-columns">
             ${list(['Omzet','Kostprijs van de omzet','Personeelskosten','Huur','Afschrijvingen'])}
-            ${list(['Financiële baten en lasten<br><span class="post-detail">Extern</span>','Financiële baten en lasten<br><span class="post-detail">Intercompany</span>','Nettoresultaat','EBITDA'])}
+            ${list(['Financiële baten en lasten<ul class="financial-subitems"><li>Extern</li><li>Intercompany</li></ul>','Nettoresultaat','EBITDA'])}
           </div>
         </div>
         <div class="financial-section balance-section">
@@ -40,7 +40,7 @@
         <div><h4>Jaarbudget</h4><p>De begrote financiële cijfers voor het komende jaar, verdeeld over de maanden.</p></div>
       </div>
     </div>`;
-    mount('pillars',`<div class="pillars">${items.map((p,i)=>button(`<span class="index">0${i+1}</span><strong>${p.title}</strong>`,'pillar',i,i===state.pillar,'pillar')).join('')}</div>${state.pillar===0?financial:`<div class="pillar-detail" aria-live="polite"><div><h3>${p.heading}</h3><p>${p.text}</p></div><ul>${p.examples.map(e=>`<li>${e}</li>`).join('')}</ul></div>`}`);
+    mount('pillars',`<div class="pillars">${items.map((p,i)=>button(`<strong>${p.title}</strong>`,'pillar',i,i===state.pillar,'pillar')).join('')}</div>${state.pillar===0?financial:`<div class="pillar-detail" aria-live="polite"><div><h3>${p.heading}</h3><p>${p.text}</p></div><ul>${p.examples.map(e=>`<li>${e}</li>`).join('')}</ul></div>`}`);
   }
 
   function renderScreens(){
