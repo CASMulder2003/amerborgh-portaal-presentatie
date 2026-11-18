@@ -53,6 +53,11 @@ export function withMonthlyKpiBudgetPreview(source) {
     source=source.replace(before,after);
   };
   replaceOnce(
+    "comparisons: row.comparisons.filter(c => c.delta !== null)",
+    "comparisons: row.comparisons.filter(c => c.reference === 'lastYear' && c.delta !== null)",
+  );
+  replaceOnce('title="Verandering deze maand"', 'title="Ten opzichte van vorig jaar"');
+  replaceOnce(
     "export function MonthlyKpiFigure({ field, previousMonth, previousYear, year, month }) {\n  const labels = monthReferences(year, month)",
     "export function MonthlyKpiFigure({ field, budget, previousMonth, previousYear, year, month }) {\n  const labels = { ...monthReferences(year, month), budget: 'Budget' }",
   );
@@ -65,4 +70,13 @@ export function withMonthlyKpiBudgetPreview(source) {
     "{reference.key === 'budget' ? 'Budget' : reference.key === 'lastMonth' ? 'Vorige maand' : 'Dezelfde maand vorig jaar'}{reference.key !== 'budget' && <> · {labels[reference.key].toLowerCase()}</>}",
   );
   return source;
+}
+
+// The compact KPI list in the full company overview uses the same reference.
+export function withCompanyKpiSummaryPreview(source) {
+  if (source.split('point.previous_month_kpis').length !== 3 || source.split('Vorige maand: ').length !== 2) {
+    throw new Error('Company KPI preview: expected the original previous-month summary');
+  }
+  return source.replaceAll('point.previous_month_kpis', 'point.previous_kpis')
+    .replace('Vorige maand: ', 'T.o.v. {months[selection.month-1].toLowerCase()} {selection.year-1}: ');
 }

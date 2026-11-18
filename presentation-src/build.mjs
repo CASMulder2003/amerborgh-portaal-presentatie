@@ -4,7 +4,7 @@ import { pathToFileURL, fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { withKpiBudgetPreview, withMonthlyKpiBudgetPreview } from './kpi-budget-preview.mjs';
+import { withKpiBudgetPreview, withMonthlyKpiBudgetPreview, withCompanyKpiSummaryPreview } from './kpi-budget-preview.mjs';
 import { withTrendColorsPreview } from './trend-colors-preview.mjs';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const portal = process.env.PORTAL_SOURCE;
@@ -29,6 +29,7 @@ await build({
       if (relative === 'pages/reporting/overview/KpiOverview.jsx') return withKpiBudgetPreview(code);
       if (relative === 'pages/reporting/overview/MonthFigures.jsx') return withMonthlyKpiBudgetPreview(code);
       if (relative === 'pages/reporting/charts/TrendChart.jsx') return withTrendColorsPreview(code);
+      if (relative === 'pages/reporting/overview/Dashboard.jsx') code = withCompanyKpiSummaryPreview(code);
       if (exportsFor[relative]) return code + '\nexport { ' + exportsFor[relative].join(', ') + ' };\n';
     },
   }, react()],
