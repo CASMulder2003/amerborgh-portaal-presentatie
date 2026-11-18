@@ -7,13 +7,40 @@
   const frame=(view,id)=>`<div class="portal-viewport" popover="manual"><iframe id="${id}" class="real-portal" title="Rapportageportaal: ${view}" src="assets/portal/index.html?view=${view}" loading="eager" sandbox="allow-scripts allow-same-origin"></iframe></div>`;
   function renderPillars() {
     const items=[
-      {title:'Financiële informatie'},
-      {title:'KPI’s',sub:'De ontwikkeling van de activiteiten',heading:'De ontwikkeling van de activiteiten',text:'KPI’s helpen volgen wat er commercieel en operationeel verandert. We kiezen per onderneming een beperkt aantal relevante indicatoren.',examples:['<strong>Gebruik en opbrengst</strong><span>Bij een hotel: bezetting en gemiddelde kamerprijs.</span>','<strong>Vraag en klanten</strong><span>Bijvoorbeeld orderintake, nieuwe klanten en klantbehoud.</span>','<strong>Inzet en prestaties</strong><span>Bijvoorbeeld productiviteit en omzet per FTE.</span>']},
-      {title:'Kwalitatieve toelichting',sub:'De context en ondersteuning',heading:'Context en benodigde ondersteuning',text:'Korte antwoorden geven context bij de cijfers en maken duidelijk welke onderwerpen in de bespreking aandacht vragen.',examples:['<strong>Ontwikkelingen</strong><span>Welke marktontwikkelingen beïnvloeden het bedrijf?</span>','<strong>Vooruitkijken</strong><span>Welke kansen of risico’s vragen de komende maand aandacht?</span>','<strong>Ondersteuning</strong><span>Waar kan Amerborgh bij helpen?</span>']}
+      {title:'Financiële cijfers'},
+      {title:'KPI’s',heading:'Circa drie tot vijf KPI’s per bedrijf',text:'We kiezen indicatoren die passen bij de activiteiten van de onderneming. Met een vaste definitie en eenheid kunnen we hun ontwikkeling over meerdere maanden volgen.',examples:[
+        '<strong>Klanten</strong><span>Nieuwe klanten, klantbehoud en omzet per klant.</span>',
+        '<strong>Verkoop</strong><span>Orderintake, sales pipeline en conversie.</span>',
+        '<strong>Bedrijfsvoering</strong><span>Bezettingsgraad, productiviteit en omzet per FTE.</span>'
+      ]},
+      {title:'Kwalitatieve toelichting',heading:'Ontwikkelingen en ondersteuning',text:'De onderneming beschrijft belangrijke veranderingen en de ondersteuning die zij nodig heeft. De vragen stemmen we per bedrijf af.',examples:[
+        '<strong>Welke marktontwikkelingen beïnvloeden het bedrijf?</strong><span>Wat merk je bij klanten, concurrenten of leveranciers?</span>',
+        '<strong>Welke kansen of risico’s vragen de komende maand aandacht?</strong>',
+        '<strong>Waar kan Amerborgh bij helpen?</strong><span>Noem eventuele ondersteuning of een besluit dat nodig is.</span>'
+      ]}
     ];
     const p=items[state.pillar];
-    const financial=`<div class="financial-pillar-detail" aria-live="polite"><div><h3>Winst-en-verliesrekening</h3><ul>${['Omzet','Kostprijs van de omzet','Personeelskosten','Huur','Afschrijvingen','Financiële baten en lasten · extern','Financiële baten en lasten · intercompany','Nettoresultaat','EBITDA'].map(label=>`<li>${label}</li>`).join('')}</ul></div><div><h3>Balans</h3><ul>${['Materiële vaste activa','Debiteuren','Liquide middelen','Crediteuren'].map(label=>`<li>${label}</li>`).join('')}</ul><h3 class="budget-heading">Jaarbudget</h3><p>De verwachte financiële cijfers voor het komende jaar.</p><p class="calculation-note">EBITDA wordt bij handmatige invoer berekend en bij LucaNet uit het bestand overgenomen.</p></div></div>`;
-    mount('pillars',`<div class="pillars">${items.map((p,i)=>button(`<span class="index">0${i+1}</span><strong>${p.title}</strong>`,'pillar',i,i===state.pillar,'pillar')).join('')}</div>${state.pillar===0?financial:`<div class="pillar-detail" aria-live="polite"><div><h3>${p.heading}</h3><p class="muted">${p.text}</p></div><ul>${p.examples.map(e=>`<li>${e}</li>`).join('')}</ul></div>`}`);
+    const list=labels=>`<ul>${labels.map(label=>`<li>${label}</li>`).join('')}</ul>`;
+    const financial=`<div class="financial-detail" aria-live="polite">
+      <div class="financial-columns">
+        <div class="financial-section pnl-section">
+          <h3>Winst-en-verliesrekening</h3><p class="section-caption">Opbrengsten, kosten en resultaat over de gekozen periode.</p>
+          <div class="pnl-columns">
+            ${list(['Omzet','Kostprijs van de omzet','Personeelskosten','Huur','Afschrijvingen'])}
+            ${list(['Financiële baten en lasten<br><span class="post-detail">Extern</span>','Financiële baten en lasten<br><span class="post-detail">Intercompany</span>','Nettoresultaat','EBITDA'])}
+          </div>
+        </div>
+        <div class="financial-section balance-section">
+          <h3>Balans</h3><p class="section-caption">De stand aan het einde van de periode.</p>
+          ${list(['Materiële vaste activa','Debiteuren','Liquide middelen','Crediteuren'])}
+        </div>
+      </div>
+      <div class="financial-context">
+        <div><h4>Vergelijkingen</h4><p>Realisatie tegenover dezelfde periode vorig jaar en, waar beschikbaar, het budget.</p></div>
+        <div><h4>Jaarbudget</h4><p>De begrote financiële cijfers voor het komende jaar, verdeeld over de maanden.</p></div>
+      </div>
+    </div>`;
+    mount('pillars',`<div class="pillars">${items.map((p,i)=>button(`<span class="index">0${i+1}</span><strong>${p.title}</strong>`,'pillar',i,i===state.pillar,'pillar')).join('')}</div>${state.pillar===0?financial:`<div class="pillar-detail" aria-live="polite"><div><h3>${p.heading}</h3><p>${p.text}</p></div><ul>${p.examples.map(e=>`<li>${e}</li>`).join('')}</ul></div>`}`);
   }
 
   function renderScreens(){

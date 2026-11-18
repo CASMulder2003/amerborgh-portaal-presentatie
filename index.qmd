@@ -35,7 +35,7 @@ format:
 <p class="cover-intro">Financiële informatie, KPI’s<br>en kwalitatieve toelichtingen</p>
 <div class="cover-rule"></div>
 <div class="contents">
-  <a href="#/doel"><span>01</span><strong>Doel en inhoud</strong><small>Waarom en wat vragen we?</small></a>
+  <a href="#/doel"><span>01</span><strong>Doel en inhoud</strong><small>Welke informatie verzamelen we?</small></a>
   <a href="#/overzicht"><span>02</span><strong>Het portaal</strong><small>Voor de onderneming en Amerborgh</small></a>
   <a href="#/aanleveren"><span>03</span><strong>Aanleveren en toegang</strong><small>Wie doet wat?</small></a>
 </div>
@@ -47,14 +47,14 @@ Deze presentatie ondersteunt het contextdocument. De schermen gebruiken de origi
 
 ## Waarom het rapportageportaal? {#doel}
 
-<p class="lead">Eén overzicht van resultaten en ontwikkelingen als basis voor het gesprek met de onderneming.</p>
+<p class="lead">Maandelijkse cijfers en toelichtingen voor de budget- en voortgangsbesprekingen per kwartaal.</p>
 ```{=html}
 <div class="closing-grid">
-  <div><span class="large-number">01</span><h3>Resultaten volgen</h3><p>De belangrijkste financiële cijfers en KPI’s bij elkaar, met hun ontwikkeling over de tijd.</p></div>
-  <div><span class="large-number">02</span><h3>Aandachtspunten bespreken</h3><p>Veranderingen, kansen en risico’s vanuit de onderneming zelf.</p></div>
-  <div><span class="large-number">03</span><h3>Ondersteuning bepalen</h3><p>Waar kan Amerborgh helpen en welke besluiten zijn nodig?</p></div>
+  <div><span class="large-number">01</span><h3>Financiële prestaties</h3><p>Hoe ontwikkelen omzet, kosten en resultaat zich ten opzichte van budget en vorig jaar?</p></div>
+  <div><span class="large-number">02</span><h3>Operationele en commerciële ontwikkeling</h3><p>Welke indicatoren laten zien hoe de activiteiten van de onderneming zich ontwikkelen?</p></div>
+  <div><span class="large-number">03</span><h3>Aandacht en ondersteuning</h3><p>Wat speelt er binnen de onderneming en waar kan Amerborgh helpen?</p></div>
 </div>
-<div class="closing-bottom"><strong>Samen afstemmen per onderneming</strong><span>De relevante KPI’s, de vragen en een praktische manier van aanleveren.</span></div>
+<div class="closing-bottom"><strong>In de kwartaalbespreking</strong><span>Afwijkingen toelichten, de jaarverwachting bespreken en bepalen welke actie nodig is.</span></div>
 ```
 
 ::: {.notes}
@@ -63,7 +63,7 @@ Begin met het doel van de rapportage en bespreek daarna welke informatie daarvoo
 
 ## De drie onderdelen {#drie-onderdelen}
 
-<p class="lead">Per onderneming vragen we een beperkte, relevante selectie informatie.</p>
+<p class="lead">Een vaste financiële basis, aangevuld met KPI’s en vragen die passen bij de onderneming.</p>
 <div id="pillars" class="interactive"></div>
 
 ::: {.notes}
@@ -72,7 +72,7 @@ De financiële informatie is beperkt tot de belangrijkste posten. KPI’s versch
 
 ## Het financiële overzicht {#overzicht}
 
-<p class="lead">De onderneming volgt haar resultaten en de verschillen met eerdere perioden en het budget.</p>
+<p class="lead">Omzet en nettoresultaat naast budget en vorig jaar. De waterval toont de opbouw van EBITDA.</p>
 <div id="overview" class="interactive"></div>
 
 ::: {.notes}
@@ -81,7 +81,7 @@ De grafieken komen rechtstreeks uit het portaal. Hotel A en de bedragen zijn fic
 
 ## KPI’s per onderneming {#kpis}
 
-<p class="lead">Bezetting, verkochte kamernachten en gemiddelde kamerprijs laten de ontwikkeling van Hotel A zien.</p>
+<p class="lead">Voor Hotel A volgen we bezettingsgraad, verkochte kamernachten en gemiddelde kamerprijs.</p>
 <div id="kpi-example" class="interactive"></div>
 
 ::: {.notes}
@@ -90,7 +90,7 @@ Dit zijn de originele KPI-grafieken. Andere ondernemingen krijgen de indicatoren
 
 ## Kwalitatieve toelichting {#toelichting}
 
-<p class="lead">Het bedrijf geeft context bij de cijfers en benoemt waar ondersteuning nodig is.</p>
+<p class="lead">De onderneming beschrijft wat er speelt, welke kansen en risico’s zij ziet en waar Amerborgh kan helpen.</p>
 <div id="qualitative" class="interactive"></div>
 
 ::: {.notes}
@@ -99,7 +99,7 @@ De vragen zijn bestaande voorbeeldvragen uit het portaal en kunnen per ondernemi
 
 ## Wat ziet Amerborgh? {#amerborgh}
 
-<p class="lead">De resultaten van de actieve bedrijven naast elkaar, met toegang tot de onderliggende informatie.</p>
+<p class="lead">Vergelijk actieve bedrijven op omzet, EBITDA en nettoresultaat. Open een bedrijf voor de details.</p>
 <div id="central-overview" class="interactive"></div>
 
 ::: {.notes}
@@ -108,7 +108,7 @@ Dit is de echte tabel Resultaten per bedrijf. De kolommen kunnen worden gesortee
 
 ## Informatie aanleveren {#aanleveren}
 
-<p class="lead">Zelf invullen of financiële cijfers uit een bestaand bestand overnemen, controleren en indienen.</p>
+<p class="lead">Vul de formulieren in het portaal in. Financiële cijfers kun je ook uit Excel of CSV overnemen.</p>
 <div id="delivery" class="interactive"></div>
 
 ::: {.notes}
@@ -117,7 +117,7 @@ Het invulformulier bevat ook de knop voor bestandsimport. Deze opent in de prese
 
 ## Wie levert wat aan? {#lucanet}
 
-<p class="lead">De aanlevering van financiële cijfers hangt af van het gebruik van LucaNet.</p>
+<p class="lead">Bij LucaNet levert Amerborgh de financiële cijfers aan. KPI’s en toelichtingen vult de onderneming zelf in.</p>
 ```{=html}
 <div class="responsibilities">
   <div class="responsibility-head"><span></span><h3>Bedrijven via LucaNet</h3><h3>Overige bedrijven</h3></div>
