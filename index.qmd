@@ -72,11 +72,11 @@ De financiële informatie is beperkt tot de belangrijkste posten. KPI’s versch
 
 ## Het financiële overzicht {#overzicht}
 
-<p class="lead">Omzet en nettoresultaat naast budget en vorig jaar. De waterval toont de opbouw van EBITDA.</p>
+<p class="lead">Amerborgh ziet per onderneming de financiële ontwikkeling, naast het beschikbare budget en dezelfde periode vorig jaar.</p>
 <div id="overview" class="interactive"></div>
 
 ::: {.notes}
-De grafieken komen rechtstreeks uit het portaal. Hotel A en de bedragen zijn fictief. Dit is het financiële schermfragment van het eigen bedrijf, met dezelfde grafiektypen, kleuren en bediening. Het volledige overzicht bevat ook de belangrijkste bedragen bovenaan. Als een budget ontbreekt, wordt geen budgetvergelijking getoond.
+De grafieken komen rechtstreeks uit het portaal. Hotel A en de bedragen zijn fictief. Dit schermfragment laat zien hoe Amerborgh de financiële ontwikkeling van een onderneming bekijkt, met dezelfde grafiektypen, kleuren en bediening als in het portaal. Het volledige overzicht bevat ook de belangrijkste bedragen bovenaan. Als een budget ontbreekt, wordt geen budgetvergelijking getoond.
 :::
 
 ## KPI’s per onderneming {#kpis}
