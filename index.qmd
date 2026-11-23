@@ -53,7 +53,7 @@ Deze presentatie sluit aan op het met Loes afgestemde contextdocument. Eerst de 
 <li>Personeelskosten</li>
 <li>Huur</li>
 <li>Afschrijvingen</li>
-<li>Financiële baten en lasten<span class="financial-subitems">Extern · Intercompany</span></li>
+<li>Financiële baten en lasten<span class="financial-subitems"><span>Extern</span><span>Intercompany</span></span></li>
 <li>Nettoresultaat</li>
 <li>EBITDA</li>
 </ul>
@@ -64,10 +64,10 @@ Deze presentatie sluit aan op het met Loes afgestemde contextdocument. Eerst de 
 <li>Liquide middelen</li>
 <li>Crediteuren</li>
 </ul>
-<p class="financial-note">Ook het jaarbudget voor het komende jaar wordt aangeleverd.</p>
 </div>
 <div id="overview" class="interactive"></div>
 </div>
+<p class="comparison-note">Vergeleken met budget en vorige periodes.</p>
 
 ::: {.notes}
 Links staan alle gevraagde financiële posten. Rechts de bestaande portaalweergave voor één onderneming, zoals Amerborgh deze kan bekijken. De trends vergelijken met budget en dezelfde periode vorig jaar, voor zover beschikbaar. Via Deze maand zijn de maandcijfers te bekijken. Vergroten opent dezelfde weergave op volledig formaat; de terugknop brengt de presentatie terug. De bedragen zijn fictief.
@@ -78,15 +78,14 @@ Links staan alle gevraagde financiële posten. Rechts de bestaande portaalweerga
 <p class="part-name">KPI’s</p>
 <div class="pillar-layout">
 <div class="pillar-copy prose-copy">
-<div class="kpi-count"><span>3–5</span><span>gerichte KPI’s</span></div>
-<p>Afgestemd op de onderneming, om de operationele en commerciële ontwikkeling te volgen.</p>
-<p class="comparison-note">Vergeleken met budget en dezelfde periode vorig jaar.</p>
+<div class="summary-count"><span>3–5</span><span>gerichte KPI’s</span></div>
 </div>
 <div id="kpi-example" class="interactive"></div>
 </div>
+<p class="comparison-note">Vergeleken met budget en vorige periodes.</p>
 
 ::: {.notes}
-Geen vaste lijst met voorgestelde KPI’s: de keuze sluit aan op de onderneming. KPI 1, 2 en 3 zijn uitsluitend neutrale namen in de demonstratie. De budgetlijn is een presentatievoorbeeld van de gewenste uitbreiding en betekent nog geen KPI-budgetopslag in de echte site. De grijze lijn is dezelfde periode vorig jaar. De gele lijn is het budget.
+Geen vaste lijst met voorgestelde KPI’s: de keuze sluit aan op de onderneming. De grafiekweergave toont twee neutrale KPI’s, zodat beide grafieken op één pagina passen. De budgetlijn is een presentatievoorbeeld van de gewenste uitbreiding en betekent nog geen KPI-budgetopslag in de echte site. De grijze lijn is dezelfde periode vorig jaar. De gele lijn is het budget.
 :::
 
 ## De drie onderdelen {#toelichting .pillar-slide .qualitative-slide}
@@ -94,8 +93,7 @@ Geen vaste lijst met voorgestelde KPI’s: de keuze sluit aan op de onderneming.
 <p class="part-name">Kwalitatieve toelichtingen</p>
 <div class="pillar-layout">
 <div class="pillar-copy prose-copy">
-<p class="qualitative-intro">Context bij de resultaten.</p>
-<p>Relevante ontwikkelingen, prioriteiten en mogelijke ondersteuning door Amerborgh.</p>
+<div class="summary-count"><span>4</span><span>vragen per maand</span></div>
 </div>
 <div id="qualitative" class="interactive"></div>
 </div>
@@ -115,15 +113,13 @@ Het formulier gebruikt de werkelijke portaalcomponenten. Via Alle formulieren zi
 
 ## Wie levert wat aan? {#lucanet .responsibility-slide}
 
-<div class="delivery-flow">
-<div class="flow-label">Financiële cijfers</div>
-<div class="flow-route"><strong>LucaNet</strong><span class="flow-connector" aria-hidden="true"></span><span>Centraal door Amerborgh</span></div>
-<div class="flow-route"><strong>Overige ondernemingen</strong><span class="flow-connector" aria-hidden="true"></span><span>Via formulier of bestand</span></div>
-<div class="flow-destination"><span>Rapportageportaal</span></div>
+<div class="delivery-columns">
+<div><h3>Via LucaNet</h3><p>Amerborgh laadt de financiële cijfers centraal in.</p></div>
+<div><h3>Overige ondernemingen</h3><p>Financiële cijfers via een formulier of bestand.</p></div>
 </div>
 <div class="shared-delivery"><strong>KPI’s en toelichtingen</strong><span>Door de onderneming</span></div>
 <div class="delivery-notes">
-<p>We stemmen de import samen af op de bestanden uit jullie administratie.</p>
+<p>We kunnen de import ook samen afstemmen op de bestanden uit jullie administratie.</p>
 <p>Voor vastgoed vragen we alleen financiële informatie.</p>
 </div>
 

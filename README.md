@@ -26,7 +26,7 @@ Open daarna `http://127.0.0.1:8768/`. Pijltjestoetsen bladeren door de dia’s. 
 
 Elk van de drie onderdelen combineert de kerninformatie met de bijbehorende portaalweergave op één slide. De portaalvoorbeelden gebruiken de oorspronkelijke React-onderdelen en CSS van het portaal. **Bedrijf A, Bedrijf B, Bedrijf C en alle cijfers en antwoorden zijn fictief.** Er is geen verbinding met productie of AI. Formulierwijzigingen bestaan alleen in het geheugen van de geopende demo. Het importvoorbeeld gebruikt een ingebouwd werkblad met de echte herkenningscode. Via Alle formulieren zijn de drie onderdelen en het financiële jaarbudget bereikbaar.
 
-Ieder portaalvoorbeeld kan worden vergroot en weer teruggezet. KPI 1, 2 en 3 zijn neutrale weergaven, geen voorgestelde indicatoren. De directie kiest de eigen KPI’s. De budgetlijn bij KPI’s is een presentatievoorbeeld van de gewenste uitbreiding; dit implementeert nog geen KPI-budgetopslag in het echte portaal. De eerste drie voorlopige kwalitatieve vragen volgen het met Loes afgestemde document, aangevuld met een vierde, optionele vraag voor eigen onderwerpen. De antwoorden tonen alleen ‘…’.
+Ieder portaalvoorbeeld kan worden vergroot en weer teruggezet. De KPI-slide toont twee grafieken; het invulformulier bevat drie neutrale KPI-velden. Dit zijn geen voorgestelde indicatoren. De directie kiest de eigen KPI’s. De budgetlijn bij KPI’s is een presentatievoorbeeld van de gewenste uitbreiding; dit implementeert nog geen KPI-budgetopslag in het echte portaal. De eerste drie voorlopige kwalitatieve vragen volgen het met Loes afgestemde document, aangevuld met een vierde, optionele vraag voor eigen onderwerpen. De antwoorden tonen alleen ‘…’.
 
 ## Bewerken en bouwen
 

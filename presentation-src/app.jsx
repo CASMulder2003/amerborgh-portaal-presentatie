@@ -28,6 +28,14 @@ import './frame.css';
 
 const initialView = new URLSearchParams(location.search).get('view') || 'company';
 const centralDemo = ['central','central-table'].includes(initialView);
+// Keep two complete KPI examples on the slide, including all comparison series.
+const kpiSlideRows = rows.map(row => ({
+  ...row,
+  series: row.series.map(point => Object.fromEntries(Object.entries(point).map(([key, value]) => [
+    key, ['kpis', 'previous_kpis', 'budget_kpis', 'previous_month_kpis'].includes(key)
+      ? value.filter(field => ['kpi_1', 'kpi_2'].includes(field.id)) : value,
+  ]))),
+}));
 // The central example can open every company's published tabs. Each iframe has
 // its own memory, so these records cannot change the separate input example.
 if (centralDemo) rows.forEach((_, companyIndex) => {
@@ -130,7 +138,7 @@ function Demo() {
     {!centralDemo&&['company','kpi'].includes(view)&&<div className="overview-period"><p>{basis==='ytd'?`Januari t/m ${months[month-1].toLowerCase()} ${year}`:`${months[month-1]} ${year}`}</p><OverviewPeriodTabs section="bedrijven" selection={oneSelection} view={view==='kpi'?'kpi':'samenvatting'} basis={basis}/></div>}
     {view==='company'&&(centralDemo?<Dashboard data={{...data,companies:[rows[company]]}} context={context} selection={oneSelection} view={tab} basis={basis} section="bedrijven" loading={false}/>:basis==='month'?<MonthlyFinancialFigures values={monthlyValues(rows[company].series,month)} year={year} month={month}/>:<div className="summary-charts company-summary-charts">{[['revenue','Omzet'],['net_result','Nettoresultaat'],['ebitda','EBITDA']].map(([field,title])=><TrendChart key={field} title={title} defaultStyle={field==='ebitda'?'bridge':'line'} bridgeValues={field==='ebitda'?rows[company].cumulative.actual:undefined} bridgePeriod="Januari t/m Augustus 2026" points={rows[company].series.map(point=>({label:point.period,actual:point.actual[field],previous:point.previous[field],budget:point.budget[field]}))} series={[{key:'actual',label:'2026'},{key:'previous',label:'2025'},{key:'budget',label:'Budget'}]}/>)}</div>)}
     {(view==='central'||view==='central-table')&&<CompanyResults data={data} context={context} selection={selection} basis={basis}/>}
-    {view==='kpi'&&<KpiCompanyFigures row={rows[company]} year={year} month={month} basis={basis}/>}
+    {view==='kpi'&&<KpiCompanyFigures row={kpiSlideRows[company]} year={year} month={month} basis={basis}/>}
     {view==='qualitative'&&<PublicationContent form={makeDemoForm('qualitative',{submitted:true})} selection={oneSelection} kind="qualitative" central compact/>}
     {view==='publication'&&<PublicationContent form={getDemoForm(formPath(kind,company))} selection={oneSelection} kind={kind} central compact/>}
     {view==='form'&&<LocalForm kind={kind} companyIndex={company}/>}
