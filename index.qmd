@@ -27,10 +27,10 @@ format:
     slide-level: 2
 ---
 
-## Het rapportageportaal {#start .cover}
+## Het rapportageportaal {#start .cover data-background-color="#3d3935"}
 
 <div class="cover-top"><img src="assets/amerborgh-logo.svg" alt="Amerborgh" class="brand"></div>
-<div class="cover-title">Het rapportageportaal</div>
+<div class="cover-title">Het<br>rapportageportaal</div>
 <nav class="contents" aria-label="Inhoud">
 <a href="#/drie-onderdelen"><span>01</span><strong>De drie onderdelen</strong></a>
 <a href="#/aanleveren"><span>02</span><strong>Informatie aanleveren</strong></a>
@@ -64,7 +64,7 @@ Deze presentatie sluit aan op het met Loes afgestemde contextdocument. Eerst de 
 <li>Liquide middelen</li>
 <li>Crediteuren</li>
 </ul>
-<p class="financial-note">Vergelijking met budget en dezelfde periode vorig jaar. Daarnaast vragen we het jaarbudget voor het komende jaar.</p>
+<p class="financial-note">Ook het jaarbudget voor het komende jaar wordt aangeleverd.</p>
 </div>
 <div id="overview" class="interactive"></div>
 </div>
@@ -73,13 +73,14 @@ Deze presentatie sluit aan op het met Loes afgestemde contextdocument. Eerst de 
 Links staan alle gevraagde financiële posten. Rechts de bestaande portaalweergave voor één onderneming, zoals Amerborgh deze kan bekijken. De trends vergelijken met budget en dezelfde periode vorig jaar, voor zover beschikbaar. Via Deze maand zijn de maandcijfers te bekijken. Vergroten opent dezelfde weergave op volledig formaat; de terugknop brengt de presentatie terug. De bedragen zijn fictief.
 :::
 
-## De drie onderdelen {#kpis .pillar-slide}
+## De drie onderdelen {#kpis .pillar-slide .kpi-slide}
 
 <p class="part-name">KPI’s</p>
 <div class="pillar-layout">
 <div class="pillar-copy prose-copy">
-<p>Circa <strong>3 tot 5 KPI’s</strong> die bepalend zijn voor de onderneming en de operationele en commerciële ontwikkeling laten zien.</p>
-<p>De ontwikkeling wordt vergeleken met budget en dezelfde periode vorig jaar.</p>
+<div class="kpi-count"><span>3–5</span><span>gerichte KPI’s</span></div>
+<p>Afgestemd op de onderneming, om de operationele en commerciële ontwikkeling te volgen.</p>
+<p class="comparison-note">Vergeleken met budget en dezelfde periode vorig jaar.</p>
 </div>
 <div id="kpi-example" class="interactive"></div>
 </div>
@@ -88,12 +89,13 @@ Links staan alle gevraagde financiële posten. Rechts de bestaande portaalweerga
 Geen vaste lijst met voorgestelde KPI’s: de keuze sluit aan op de onderneming. KPI 1, 2 en 3 zijn uitsluitend neutrale namen in de demonstratie. De budgetlijn is een presentatievoorbeeld van de gewenste uitbreiding en betekent nog geen KPI-budgetopslag in de echte site. De grijze lijn is dezelfde periode vorig jaar. De gele lijn is het budget.
 :::
 
-## De drie onderdelen {#toelichting .pillar-slide}
+## De drie onderdelen {#toelichting .pillar-slide .qualitative-slide}
 
 <p class="part-name">Kwalitatieve toelichtingen</p>
 <div class="pillar-layout">
 <div class="pillar-copy prose-copy">
-<p>Toelichting op resultaten en ontwikkelingen, prioriteiten en mogelijke ondersteuning door Amerborgh.</p>
+<p class="qualitative-intro">Context bij de resultaten.</p>
+<p>Relevante ontwikkelingen, prioriteiten en mogelijke ondersteuning door Amerborgh.</p>
 </div>
 <div id="qualitative" class="interactive"></div>
 </div>
@@ -113,14 +115,13 @@ Het formulier gebruikt de werkelijke portaalcomponenten. Via Alle formulieren zi
 
 ## Wie levert wat aan? {#lucanet .responsibility-slide}
 
-<table class="responsibilities">
-<thead><tr><th scope="col"></th><th scope="col">Via LucaNet</th><th scope="col">Overige ondernemingen</th></tr></thead>
-<tbody>
-<tr><th scope="row">Financiële cijfers</th><td>Centraal door Amerborgh</td><td>Via formulier of bestand</td></tr>
-<tr><th scope="row">KPI’s</th><td colspan="2">Door de onderneming</td></tr>
-<tr><th scope="row">Kwalitatieve toelichtingen</th><td colspan="2">Door de onderneming</td></tr>
-</tbody>
-</table>
+<div class="delivery-flow">
+<div class="flow-label">Financiële cijfers</div>
+<div class="flow-route"><strong>LucaNet</strong><span class="flow-connector" aria-hidden="true"></span><span>Centraal door Amerborgh</span></div>
+<div class="flow-route"><strong>Overige ondernemingen</strong><span class="flow-connector" aria-hidden="true"></span><span>Via formulier of bestand</span></div>
+<div class="flow-destination"><span>Rapportageportaal</span></div>
+</div>
+<div class="shared-delivery"><strong>KPI’s en toelichtingen</strong><span>Door de onderneming</span></div>
 <div class="delivery-notes">
 <p>We stemmen de import samen af op de bestanden uit jullie administratie.</p>
 <p>Voor vastgoed vragen we alleen financiële informatie.</p>
@@ -130,15 +131,16 @@ Het formulier gebruikt de werkelijke portaalcomponenten. Via Alle formulieren zi
 LucaNet-bedrijven hoeven de centraal ingeladen financiële cijfers niet zelf aan te leveren. KPI’s en toelichtingen blijven bij de onderneming. De huidige centrale route gebruikt een exportbestand; er wordt geen automatische API-koppeling beloofd. Het afgesproken aanleverproces en de eigen administratie zijn het uitgangspunt.
 :::
 
-## Gebruikers en toegang {#gebruikers .access-slide}
+## Gebruikers en toegang {#gebruikers .access-slide data-background-color="#3d3935"}
 
 <div class="access-layout">
-<div class="organization"><h3>Organisatie</h3><p>Een gebruiker is gekoppeld aan een organisatie. Daar kunnen één of meerdere ondernemingen onder vallen.</p></div>
+<div class="organization"><h3>Organisatie</h3><p>Eén of meerdere ondernemingen</p><div class="organization-marks" aria-hidden="true"><span></span><span></span><span></span></div></div>
 <div class="access-roles">
-<div><h3>Medewerker</h3><p>Kan informatie bekijken en aanleveren binnen de toegewezen organisatie.</p></div>
-<div><h3>Beheerder</h3><p>Kan daarnaast gebruikers uitnodigen en accounts beheren binnen die organisatie.</p></div>
+<div><h3>Medewerker</h3><p>Informatie bekijken en aanleveren</p></div>
+<div><h3>Beheerder</h3><p>Dezelfde toegang, met gebruikersbeheer</p></div>
 </div>
 </div>
+<p class="access-note">Toegang geldt voor de ondernemingen binnen de toegewezen organisatie.</p>
 
 ::: {.notes}
 Organisatie en rol bepalen de toegang. Eén organisatie kan meerdere ondernemingen omvatten. De organisatie en beheerdersrol kunnen later worden aangepast. IT-beheer is een afzonderlijke bevoegdheid en geeft niet vanzelf toegang tot alle financiële gegevens.
