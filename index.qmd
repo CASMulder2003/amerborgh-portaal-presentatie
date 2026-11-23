@@ -136,7 +136,6 @@ LucaNet-bedrijven hoeven de centraal ingeladen financiële cijfers niet zelf aan
 <div><h3>Beheerder</h3><p>Dezelfde toegang, met gebruikersbeheer</p></div>
 </div>
 </div>
-<p class="access-note">Toegang geldt voor de ondernemingen binnen de toegewezen organisatie.</p>
 
 ::: {.notes}
 Organisatie en rol bepalen de toegang. Eén organisatie kan meerdere ondernemingen omvatten. De organisatie en beheerdersrol kunnen later worden aangepast. IT-beheer is een afzonderlijke bevoegdheid en geeft niet vanzelf toegang tot alle financiële gegevens.

@@ -127,7 +127,6 @@ body, .reveal-viewport { background:var(--page); }
 .access-roles::after { content:""; position:absolute; left:-160px; width:82px; height:1px; top:50%; background:#857565; }
 .access-roles > div { padding:22px 0 38px; }
 .access-roles > div + div { padding:35px 0 22px; border-top:1px solid #655d54; }
-.reveal .access-note { border-top:1px solid #655d54; padding-top:25px; margin-top:85px; font-size:21px; color:#c7b8a7; }
 .reveal .slides section { isolation:isolate; }
 [hidden] { display:none !important; }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { transition:none!important; animation:none!important; } }
