@@ -17,17 +17,14 @@ Open daarna `http://127.0.0.1:8768/`. Pijltjestoetsen bladeren door de dia’s. 
 ## Inhoud
 
 1. Het rapportageportaal
-2. Waarom het rapportageportaal?
-3. De drie onderdelen
-4. Het financiële overzicht
-5. KPI’s per onderneming
-6. Kwalitatieve toelichting
-7. Wat ziet Amerborgh?
-8. Informatie aanleveren
-9. Wie levert wat aan?
-10. Gebruikers en toegang
+2. De drie onderdelen: financiële cijfers
+3. De drie onderdelen: KPI’s
+4. De drie onderdelen: kwalitatieve toelichtingen
+5. Informatie aanleveren
+6. Wie levert wat aan?
+7. Gebruikers en toegang
 
-De portaalvoorbeelden gebruiken de oorspronkelijke React-onderdelen en CSS van het portaal. Vanuit de bedrijfstabel opent het volledige bedrijfsoverzicht, met een terugknop. **Bedrijf A, Bedrijf B, Bedrijf C en alle cijfers en antwoorden zijn fictief.** Er is geen verbinding met productie of AI. Formulierwijzigingen bestaan alleen in het geheugen van de geopende demo. Het importvoorbeeld gebruikt een ingebouwd werkblad met de echte herkenningscode. Via Alle formulieren zijn de drie onderdelen en het financiële jaarbudget bereikbaar.
+Elk van de drie onderdelen combineert de kerninformatie met de bijbehorende portaalweergave op één slide. De portaalvoorbeelden gebruiken de oorspronkelijke React-onderdelen en CSS van het portaal. **Bedrijf A, Bedrijf B, Bedrijf C en alle cijfers en antwoorden zijn fictief.** Er is geen verbinding met productie of AI. Formulierwijzigingen bestaan alleen in het geheugen van de geopende demo. Het importvoorbeeld gebruikt een ingebouwd werkblad met de echte herkenningscode. Via Alle formulieren zijn de drie onderdelen en het financiële jaarbudget bereikbaar.
 
 Ieder portaalvoorbeeld kan worden vergroot en weer teruggezet. KPI 1, 2 en 3 zijn neutrale weergaven, geen voorgestelde indicatoren. De directie kiest de eigen KPI’s. De budgetlijn bij KPI’s is een presentatievoorbeeld van de gewenste uitbreiding; dit implementeert nog geen KPI-budgetopslag in het echte portaal. De eerste drie voorlopige kwalitatieve vragen volgen het met Loes afgestemde document, aangevuld met een vierde, optionele vraag voor eigen onderwerpen. De antwoorden tonen alleen ‘…’.
 
