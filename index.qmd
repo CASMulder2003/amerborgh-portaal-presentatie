@@ -93,7 +93,7 @@ Geen vaste lijst met voorgestelde KPI’s: de keuze sluit aan op de onderneming.
 <p class="part-name">Kwalitatieve toelichtingen</p>
 <div class="pillar-layout">
 <div class="pillar-copy prose-copy">
-<div class="summary-count"><span>4</span><span>vragen per maand</span></div>
+<div class="summary-count"><span>4</span><span>vragen</span></div>
 </div>
 <div id="qualitative" class="interactive"></div>
 </div>
